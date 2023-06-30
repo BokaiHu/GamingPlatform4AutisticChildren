@@ -8,4 +8,10 @@ export default {
   exit: '退出游戏',
   goBack: '返回',
   language: '语言',
+  continent_asia: '亚洲',
+  continent_europe: '欧洲',
+  continent_africa: '非洲',
+  continent_na: '北美洲',
+  continent_sa: '南美洲',
+  continent_oceania: '大洋洲',
 };

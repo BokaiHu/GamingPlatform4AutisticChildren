@@ -30,6 +30,33 @@ const i18n = createI18n({
   },
 });
 
+router.beforeEach((to, from, next) => {
+  if (to.name === 'home') {
+    document.body.classList.add('home-page');
+    document.body.classList.remove('start-game-page');
+  } 
+  else if (to.name === 'start') {
+    document.body.classList.add('start-game-page');
+    document.body.classList.remove('home-page');
+  } 
+  else if (to.name === 'settings') {
+    document.body.classList.add('home-page');
+    document.body.classList.remove('start-game-page');
+  } 
+  else if (to.name === 'info') {
+    document.body.classList.add('home-page');
+    document.body.classList.remove('start-game-page');
+  } 
+  else if (to.name === 'exit') {
+    document.body.classList.add('home-page');
+    document.body.classList.remove('start-game-page');
+  } 
+  else {
+    document.body.classList.remove('home-page', 'start-game-page');
+  }
+  next();
+});
+
 const app = createApp(App);
 app.use(router);
 app.use(i18n);

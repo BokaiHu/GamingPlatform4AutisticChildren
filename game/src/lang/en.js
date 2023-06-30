@@ -8,4 +8,10 @@ export default {
   exit: 'Exit Game',
   goBack: 'Return',
   language: 'Language',
+  continent_asia: 'Asia',
+  continent_europe: 'Europe',
+  continent_africa: 'Afica',
+  continent_na: 'North America',
+  continent_sa: 'South America',
+  continent_oceania: 'Oceania',
 };

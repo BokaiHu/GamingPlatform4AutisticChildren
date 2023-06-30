@@ -22,7 +22,6 @@ export default {
 </script>
 
 <style scoped>
-/* 根据需要自定义样式 */
 .light {
   font-size: 92px;
   margin-bottom: 140px;

@@ -7,10 +7,17 @@
 </template>
 
 <style>
-/* CSS 样式可以根据需要进行自定义 */
-body {
-  height: 100%;
+.home-page {
   background-color: #AF8A54;
+}
+
+.start-game-page {
+  background-image: url("/src/assets/cWorldMap.jpg");
+  width: 100%; /* 确保元素宽度为100% */
+  height: 100%; /* 确保元素高度为100% */
+  position: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .container {
