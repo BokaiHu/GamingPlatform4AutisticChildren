@@ -1,6 +1,6 @@
 // import Vue from 'vue';
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import { createI18n } from 'vue-i18n';
 import App from './App.vue'
 import Home from './components/Home.vue';
@@ -12,7 +12,7 @@ import zh from './lang/zh.js';
 import en from './lang/en.js';
 
 const router = createRouter({
-  history: createWebHistory(), 
+  history: createWebHashHistory(), 
   routes: [
     { path: '/', name: 'home', component: Home },
     { path: '/start', name: 'start', component: StartGame },

@@ -15,7 +15,9 @@
     "vue-template-compiler": "^2.7.14"
   },
   "devDependencies": {
+    "@vitejs/plugin-legacy": "^4.0.5",
     "@vitejs/plugin-vue": "^4.2.3",
+    "terser": "^5.18.2",
     "vite": "^4.3.9"
   }
 }

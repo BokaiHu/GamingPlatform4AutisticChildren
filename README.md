@@ -1,4 +1,6 @@
 # GamingPlatform4AutisticChildren
 ECE4500J Group 9 Project
 
-init
+For detailed information, see README file in the game directory.
+
+See current pages at: https://bokaihu.github.io/deploy/
