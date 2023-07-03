@@ -10,7 +10,7 @@ export default {
   language: 'Language',
   continent_asia: 'Asia',
   continent_europe: 'Europe',
-  continent_africa: 'Afica',
+  continent_africa: 'Africa',
   continent_na: 'North America',
   continent_sa: 'South America',
   continent_oceania: 'Oceania',
