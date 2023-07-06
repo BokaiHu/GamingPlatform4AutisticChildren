@@ -1,16 +1,14 @@
 <template>
   <button class="back-button" @click="goBack"><span v-html="backArrow"></span></button>
-  <div class="map">
     <div class="highlight-overlay" :class="highlightedRegion"></div>
     <div class="buttons">
-      <button class="button" data-region="asia" @mouseover="setHighlightedRegion('asia')" @mouseout="clearHighlightedRegion">{{ $t('continent_asia') }}</button>
-      <button class="button" data-region="europe" @mouseover="setHighlightedRegion('europe')" @mouseout="clearHighlightedRegion">{{ $t('continent_europe') }}</button>
-      <button class="button" data-region="africa" @mouseover="setHighlightedRegion('africa')" @mouseout="clearHighlightedRegion">{{ $t('continent_africa') }}</button>
-      <button class="button" data-region="north-america" @mouseover="setHighlightedRegion('north-america')" @mouseout="clearHighlightedRegion">{{ $t('continent_na') }}</button>
-      <button class="button" data-region="south-america" @mouseover="setHighlightedRegion('south-america')" @mouseout="clearHighlightedRegion">{{ $t('continent_sa') }}</button>
-      <button class="button" data-region="oceania" @mouseover="setHighlightedRegion('oceania')" @mouseout="clearHighlightedRegion">{{ $t('continent_oceania') }}</button>
+      <button class="button" data-region="asia" @mouseenter="setHighlightedRegion('asia')" @mouseleave="clearHighlightedRegion" @click="navigateTo('AS')">{{ $t('continent_asia') }}</button>
+      <button class="button" data-region="europe" @mouseenter="setHighlightedRegion('europe')" @mouseleave="clearHighlightedRegion" @click="navigateTo('EU')">{{ $t('continent_europe') }}</button>
+      <button class="button" data-region="africa" @mouseenter="setHighlightedRegion('africa')" @mouseleave="clearHighlightedRegion" @click="navigateTo('AF')">{{ $t('continent_africa') }}</button>
+      <button class="button" data-region="north-america" @mouseenter="setHighlightedRegion('north-america')" @mouseleave="clearHighlightedRegion" @click="navigateTo('NA')">{{ $t('continent_na') }}</button>
+      <button class="button" data-region="south-america" @mouseenter="setHighlightedRegion('south-america')" @mouseleave="clearHighlightedRegion" @click="navigateTo('SA')">{{ $t('continent_sa') }}</button>
+      <button class="button" data-region="oceania" @mouseenter="setHighlightedRegion('oceania')" @mouseleave="clearHighlightedRegion" @click="navigateTo('OC')">{{ $t('continent_oceania') }}</button>
     </div>
-  </div>
 </template>
 
 <script>
@@ -26,6 +24,9 @@ export default {
     goBack() {
       this.$router.go(-1); // 返回上一页
     },
+    navigateTo(routeName) {
+      this.$router.push({ name: routeName });
+    },
     setHighlightedRegion(region) {
       this.highlightedRegion = region;
     },
@@ -38,18 +39,20 @@ export default {
 </script>
 
 <style>
-.map {
-  background-repeat: no-repeat;
+.start-game-page {
+  background-image: url("/src/assets/cWorldMap.jpg");
+  width: 100%; /* 确保元素宽度为100% */
+  height: 100%; /* 确保元素高度为100% */
+  position: fixed;
   background-size: cover;
-  width: 100%;
-  height: 100vh;
-  transition: background-position 0.3s;
+  background-repeat: no-repeat;
+  overflow: hidden
 }
 
 .buttons {
   position: absolute;
   flex-direction: column;
-  bottom: 10px;
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
 }

@@ -23,8 +23,8 @@ export default {
 
 <style scoped>
 .light {
-  font-size: 92px;
-  margin-bottom: 140px;
+  font-size: 15vh;
+  margin-bottom: 20vh;
   color: #fefefe;
   text-shadow: 0 0 0.5em #0ae642, 0 0 0.2em #5c5c5c;
 }
