@@ -1,7 +1,7 @@
 <template>
-    <button class="back-button" @click="goBack"><span v-html="backArrow"></span></button>
-    <div span="8" class="left"  @mousewheel.prevent="rollImg">
-      <img :src="imgUrl" alt="" class="img" ref="imgDiv" @mousedown="move">
+    <div span="8" class="left" @mousewheel.prevent="rollImg">
+        <button class="back-button" @click="goBack"><span v-html="backArrow"></span></button>
+      <img src="~@/assets/EU_nobg.png" alt="" class="img" ref="imgDiv" @mousedown="move">
     </div>
   </template>
   
@@ -11,7 +11,6 @@
     data() {
       return {
         backArrow: '&#8592;',
-        imgUrl: '/src/assets/largeEU_nobg_flat.png'
       };
     },
     methods: {
@@ -32,7 +31,6 @@
         left.addEventListener('mousemove', move)
                 function move(e) {
                 img.style.left = e.pageX - x + 'px'
-                img.style.top = e.pageY - y + 'px'
                 }
         // 添加鼠标抬起事件，鼠标抬起，将事件移除
         img.addEventListener('mouseup', function() {
@@ -76,17 +74,13 @@
     width: 100%; /* 确保元素宽度为100% */
     height: 100%; /* 确保元素高度为100% */
     background-color: #fff;
-    padding: 20px;
     float: left;
     overflow: hidden;
   }
   
   .img {
     position: absolute;
-    top: 5px;
-    left: 7px;
-    max-width: 9230px;
-    max-height: 4600px;
+    width: 300%; /* 确保元素宽度为100% */
     cursor: move;
   }
   
