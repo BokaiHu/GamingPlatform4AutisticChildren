@@ -8,17 +8,23 @@ import StartGame from './components/StartGame.vue';
 import Settings from './components/Settings.vue';
 import Info from './components/Info.vue';
 import Exit from './components/Exit.vue';
+import Login from './components/Login.vue';
+import Register from './components/Register.vue';
 import zh from './lang/zh.js';
 import en from './lang/en.js';
+
+import axios from 'axios';
 
 const router = createRouter({
   history: createWebHashHistory(), 
   routes: [
-    { path: '/', name: 'home', component: Home },
+    { path: '/', name: 'home', component: Home},
+    { path: '/login', name: 'login', component: Login },
+    { path: '/register', name: 'register', component: Register},
     { path: '/start', name: 'start', component: StartGame },
     { path: '/settings', name: 'settings', component: Settings },
     { path: '/info', name: 'info', component: Info },
-    { path: '/exit', name: 'exit', component: Exit }
+    { path: '/exit', name: 'exit', component: Exit },
   ]
 });
 
@@ -62,3 +68,5 @@ app.use(router);
 app.use(i18n);
 app.config.globalProperties.$i18n = i18n;
 app.mount('#app');
+
+app.config.globalProperties.$axios=axios;

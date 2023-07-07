@@ -2,7 +2,7 @@
   <div class="home">
     <div class="container">
       <div class="light">{{ $t('title') }}</div>
-      <button class="button" @click="navigateTo('start')">{{ $t('startGame') }}</button>
+      <button class="button" @click="navigateTo('login')">{{ $t('startGame') }}</button>
       <button class="button" @click="navigateTo('settings')">{{ $t('settings') }}</button>
       <button class="button" @click="navigateTo('info')">{{ $t('info') }}</button>
       <button class="button" @click="navigateTo('exit')">{{ $t('exit') }}</button>

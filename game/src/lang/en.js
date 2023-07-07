@@ -14,4 +14,9 @@ export default {
   continent_na: 'North America',
   continent_sa: 'South America',
   continent_oceania: 'Oceania',
+  // Login and Register
+  log_in: 'Login',
+  register: 'Register',
+  user_name: 'Name',
+  user_psw: 'Password',
 };

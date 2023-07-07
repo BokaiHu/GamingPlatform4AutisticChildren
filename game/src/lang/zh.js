@@ -14,4 +14,9 @@ export default {
   continent_na: '北美洲',
   continent_sa: '南美洲',
   continent_oceania: '大洋洲',
+  // Login and Register
+  log_in: '登录',
+  register: '注册',
+  user_name: '昵称',
+  user_psw: '密码',
 };
