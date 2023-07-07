@@ -81,7 +81,7 @@ export default {
 }
 
 .highlight-overlay.asia::before {
-  background-image: url("/src/assets/asia_nobg.png");
+  background-image: url("/src/assets/global_masks/asia_nobg.png");
   background-size: cover;
   top: -8px;
   left: 515px;
@@ -92,7 +92,7 @@ export default {
 }
 
 .highlight-overlay.europe::before {
-  background-image: url("/src/assets/europe_nobg.png");
+  background-image: url("/src/assets/global_masks/europe_nobg.png");
   background-size: cover;
   top: -82px;
   left: 218px;
@@ -103,7 +103,7 @@ export default {
 }
 
 .highlight-overlay.africa::before {
-  background-image: url("/src/assets/africa_nobg.png");
+  background-image: url("/src/assets/global_masks/africa_nobg.png");
   background-size: cover;
   top: 176px;
   left: 182px;
@@ -114,7 +114,7 @@ export default {
 }
 
 .highlight-overlay.north-america::before {
-  background-image: url("/src/assets/north-america_nobg.png");
+  background-image: url("/src/assets/global_masks/north-america_nobg.png");
   background-size: cover;
   top: -60px;
   left: -191px;
@@ -125,7 +125,7 @@ export default {
 }
 
 .highlight-overlay.south-america::before {
-  background-image: url("/src/assets/south-america_nobg.png");
+  background-image: url("/src/assets/global_masks/south-america_nobg.png");
   background-size: cover;
   top: 255px;
   left: -98px;
@@ -136,7 +136,7 @@ export default {
 }
 
 .highlight-overlay.oceania::before {
-  background-image: url("/src/assets/oceania_nobg.png");
+  background-image: url("/src/assets/global_masks/oceania_nobg.png");
   background-size: cover;
   top: 257px;
   left: 633px;

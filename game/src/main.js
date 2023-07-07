@@ -7,11 +7,12 @@ import App from './App.vue'
 import Home from './components/Home.vue';
 import StartGame from './components/StartGame.vue';
 /* import Asia from './components/Asia.vue'; */
-import Europe from './components/Europe.vue';
+import Europe from './components/stages/Europe.vue';
 /* import Africa from './components/Africa.vue'; */
 /* import NorthAmerica from './components/NorthAmerica.vue'; */
 /* import SouthAmerica from './components/SouthAmerica.vue'; */
 /* import Oceania from './components/Oceania.vue'; */
+import Paris from './components/eu_stages/Paris.vue';
 import Settings from './components/Settings.vue';
 import Info from './components/Info.vue';
 import Exit from './components/Exit.vue';
@@ -28,6 +29,7 @@ const router = createRouter({
     { path: '/exit', name: 'exit', component: Exit },
     /* { path: '/start/asia', name: 'asia', component: Asia }, */
     { path: '/start/europe', name: 'EU', component: Europe },
+    { path: '/start/europe/paris', name: 'paris', component: Paris },
     /* { path: '/start/africa', name: 'africa', component: Africa }, */
     /* { path: '/start/north-america', name: 'north-america', component: NorthAmerica }, */
     /* { path: '/start/south-america', name: 'south-america', component: SouthAmerica }, */

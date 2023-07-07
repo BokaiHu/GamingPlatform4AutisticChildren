@@ -14,4 +14,10 @@ export default {
   continent_na: 'North America',
   continent_sa: 'South America',
   continent_oceania: 'Oceania',
+  shuffle: "Shuffle",
+  start: "Start!",
+  hint: "Hint",
+  resume: "Resume",
+  restart: "Restart",
+  pause: "Pause",
 };

@@ -14,4 +14,10 @@ export default {
   continent_na: '北美洲',
   continent_sa: '南美洲',
   continent_oceania: '大洋洲',
+  shuffle: "打乱拼图",
+  start: "开始游戏",
+  hint: "提示",
+  resume: "继续游戏",
+  restart: "重新开始",
+  pause: "暂停",
 };

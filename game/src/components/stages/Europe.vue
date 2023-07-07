@@ -3,7 +3,7 @@
     <button class="back-button" @click="goBack"><span v-html="backArrow"></span></button>
     <div span="8" class="left" ref="left" @mousewheel.prevent="rollImg">
       <img src="~@/assets/sflatEU.jpg" alt="" class="img" ref="imgDiv" @mousedown="move">
-      <button class="learn-more" v-for="button in buttons" :key="button.id" :style="buttonStyle(button)" ref="buttonDivs"></button>
+      <button class="learn-more" v-for="button in buttons" :key="button.id" :style="buttonStyle(button)" ref="buttonDivs" @click="navigateTo(button.route)"></button>
     </div>
   </div>
 </template>
@@ -15,8 +15,9 @@ export default {
       return {
         backArrow: '&#8592;',
         buttons: [
-          { id: 1, x: 1430, y: 520 },
-          { id: 2, x: 1400, y: 430 },
+          { id: 1, x: 1430, y: 510, route: "paris" },
+          { id: 2, x: 1400, y: 430, route: "london" },
+          { id: 3, x: 1670, y: 450, route: "berlin" },
           // 添加更多按钮...
         ],
         buttonXs: [],
