@@ -6,7 +6,6 @@
         <span>Please enter your login details.</span>
       </div>
       <div class="card-body">
-        <form>
           <div class="input-group">
             <input v-model="name" type="text" name="username" required>
             <label>{{ $t('user_name') }}</label>
@@ -17,7 +16,6 @@
           </div>
           <button @click="login()">{{ $t('log_in') }}</button>
           <button type="button" style="margin-left: 50%;" @click="navigateTo('register')">{{ $t('register') }}</button>
-        </form>
       </div>
       <button @click="navigateTo('start')">我是程序员，直接跳过</button>
     </div>
@@ -42,9 +40,9 @@ export default {
     login() {
       axios.post('http://www.code-maker.cn:8000/login',
       {name: this.name, psw: this.psw})
-      .then(function (res) {
-        if (res['data'].code == 0) {
-          alert('Success!')
+      // 把then里的function改成了lambda表达式
+      .then((res) => {
+        if (res['data'].code == 1) {
           this.navigateTo('start')
         } else {
           alert(res.data.message)
@@ -56,8 +54,8 @@ export default {
 }
 </script>
   
-  <style scoped>
-  .container {
+<style scoped>
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,4 +140,4 @@ export default {
   button:hover {
     transform: translateY(-5px);
   }
-  </style>
+</style>
