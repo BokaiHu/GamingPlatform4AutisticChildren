@@ -24,18 +24,27 @@ export default {
 <style scoped>
 .light {
   font-size: 15vh;
-  margin-bottom: 20vh;
+  margin-bottom: 10vh;
   color: #fefefe;
   text-shadow: 0 0 0.5em #0ae642, 0 0 0.2em #5c5c5c;
+  font-family: 'Roboto', sans-serif;
 }
 
 .button {
+  width: 300px;
   margin: 10px;
   padding: 10px 20px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
+  background-color: #E60AAE;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: large;
+  border: 2px solid rgba(255, 255, 255, 0);
+  border-radius: 5px;
   cursor: pointer;
+}
+.button:hover {
+  background-color: #700756;
+  border: 2px solid white;
 }
 </style>
