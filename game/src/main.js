@@ -2,6 +2,7 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { createI18n } from 'vue-i18n';
+import axios from 'axios';
 import './utils/rem.js'
 import App from './App.vue'
 import Home from './components/Home.vue';
@@ -12,6 +13,8 @@ import Europe from './components/stages/Europe.vue';
 /* import NorthAmerica from './components/NorthAmerica.vue'; */
 /* import SouthAmerica from './components/SouthAmerica.vue'; */
 /* import Oceania from './components/Oceania.vue'; */
+import Login from './components/Login.vue';
+import Register from './components/Register.vue';
 import Paris from './components/eu_stages/Paris.vue';
 import Settings from './components/Settings.vue';
 import Info from './components/Info.vue';
@@ -23,6 +26,8 @@ const router = createRouter({
   history: createWebHashHistory(), 
   routes: [
     { path: '/', name: 'home', component: Home },
+    { path: '/login', name: 'login', component: Login },
+    { path: '/register', name: 'register', component: Register},
     { path: '/start', name: 'start', component: StartGame },
     { path: '/settings', name: 'settings', component: Settings },
     { path: '/info', name: 'info', component: Info },
@@ -81,3 +86,5 @@ app.use(router);
 app.use(i18n);
 app.config.globalProperties.$i18n = i18n;
 app.mount('#app');
+
+app.config.globalProperties.$axios=axios;

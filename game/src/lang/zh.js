@@ -20,4 +20,8 @@ export default {
   resume: "继续游戏",
   restart: "重新开始",
   pause: "暂停",
+  log_in: "登录", 
+  user_name: "用户名",
+  user_psw: "密码", 
+  register: "注册",
 };

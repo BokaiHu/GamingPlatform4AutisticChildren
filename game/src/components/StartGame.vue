@@ -1,5 +1,5 @@
 <template>
-  <button class="back-button" @click="goBack"><span v-html="backArrow"></span></button>
+  <button class="back-button" @click="navigateTo('home')"><span v-html="backArrow"></span></button>
     <div class="highlight-overlay" :class="highlightedRegion"></div>
     <div class="buttons">
       <button class="button" data-region="asia" @mouseenter="setHighlightedRegion('asia')" @mouseleave="clearHighlightedRegion" @click="navigateTo('AS')">{{ $t('continent_asia') }}</button>
@@ -21,9 +21,6 @@ export default {
     };
   },
   methods: {
-    goBack() {
-      this.$router.go(-1); // 返回上一页
-    },
     navigateTo(routeName) {
       this.$router.push({ name: routeName });
     },

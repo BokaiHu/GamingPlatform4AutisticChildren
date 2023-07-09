@@ -20,4 +20,8 @@ export default {
   resume: "Resume",
   restart: "Restart",
   pause: "Pause",
+  log_in: "LogIn", 
+  user_name: "Username",
+  user_psw: "Password", 
+  register: "Register",
 };

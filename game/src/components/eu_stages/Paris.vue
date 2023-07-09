@@ -1,39 +1,39 @@
 <template>
-    <div class="content">
-        <button class="back-button" @click="goBack"><span v-html="'&#8592;'"></span></button>
-            <div class="imgbox">
-                <div class="background">
-                    <div class="image_list"
-                    :style="{left: left(item)+'px', top: top(item)+'px', backgroundPosition: posi(index)}"
-                    v-for="(index, item) in imgList.list"
-                    :data-index="index"
-                    @mousedown="mousedown(index, $event)"
-                    @mousemove="mousemove(index, $event)"
-                    @mouseup="mouseup(index, $event)"
-                    @touchstart="mousedown(index, $event)"
-                    @touchmove="mousemove(index, $event)"
-                    @touchend="mouseup(index, $event)">
-                    </div>
-                </div>
-            </div>
-            <div class="operate">
-                <div>
-                    {{setTime(timer.m)}}:{{setTime(timer.s)}}:{{setTime(timer.ms)}}
-                </div>
-                <div>
-                    <button class="btn" @click="breakUp()" :disabled="isStarted">{{ $t('shuffle') }}</button>
-                    <button class="btn" @click="hint()">{{ $t('hint') }}</button>
-                    <button class="btn" @click="startGame()" :disabled="isStarted">{{ $t('start') }}</button>
-                    <button class="btn" @click="pause()">{{ $t('pause') }}</button>
-                    <button class="btn" @click="resume()">{{ $t('resume') }}</button>
-                    <button class="btn" @click="restart()">{{ $t('restart') }}</button>
-                </div>
-                <div class="hint">
-                    <img src="\src\assets\puzzles\ef_tower.png" :style="{display: display.value, width: '200px', height: '200px'}">
-                </div>
-            </div>
-        
+  <div class="content">
+    <button class="back-button" @click="goBack">
+      <span v-html="'&#8592;'"></span>
+    </button>
+    <div class="imgbox">
+      <div class="background">
+        <div
+          class="image_list"
+          :style="{ left: left(item) + 'px', top: top(item) + 'px', backgroundPosition: posi(index) }"
+          v-for="(index, item) in imgList.list"
+          :data-index="index"
+          :key="index"
+          @mousedown="mousedown(index, $event)"
+          @touchstart="mousedown(index, $event)"
+        ></div>
+      </div>
     </div>
+    <div class="operate">
+      <div>{{ setTime(timer.m) }}:{{ setTime(timer.s) }}:{{ setTime(timer.ms) }}</div>
+      <div>
+        <button class="btn" @click="breakUp()" :disabled="isStarted">{{ $t('shuffle') }}</button>
+        <button class="btn" @click="hint()">{{ $t('hint') }}</button>
+        <button class="btn" @click="startGame()" :disabled="isStarted">{{ $t('start') }}</button>
+        <button class="btn" @click="pause()">{{ $t('pause') }}</button>
+        <button class="btn" @click="resume()">{{ $t('resume') }}</button>
+        <button class="btn" @click="restart()">{{ $t('restart') }}</button>
+      </div>
+      <div class="hint">
+        <img
+          src="\src\assets\puzzles\ef_tower.png"
+          :style="{ display: display.value, width: '200px', height: '200px' }"
+        />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -44,7 +44,6 @@ const router = useRouter();
 function goBack() {
   router.go(-1); // 返回上一页
 }
-
 const imgList = reactive({
     list: [0, 1, 2, 3, 4, 5, 6, 7, 8],
     origin_list: [0, 1, 2, 3, 4, 5, 6, 7, 8],
@@ -80,11 +79,15 @@ function hint() {
 function exchange(arr: any, index1: any, index2: any) {
     return arr[index2] = arr.splice(index1,1,arr[index2])[0]
 }
+let isDragging = false;
+
 function mousedown(index: any, event: MouseEvent | TouchEvent) {
   if (event instanceof MouseEvent) {
+    isDragging = true;
     document.addEventListener('mousemove', (e) => mousemove(index, e));
     document.addEventListener('mouseup', (e) => mouseup(index, e));
   } else if (event instanceof TouchEvent) {
+    isDragging = true;
     document.addEventListener('touchmove', (e) => mousemove(index, e));
     document.addEventListener('touchend', (e) => mouseup(index, e));
   }
@@ -92,25 +95,41 @@ function mousedown(index: any, event: MouseEvent | TouchEvent) {
 
 function mousemove(index: any, event: MouseEvent | TouchEvent) {
   event.preventDefault();
+  if (isDragging) {
+    if (event instanceof MouseEvent) {
+      const touch = event;
+      const obj = document.elementFromPoint(touch.clientX, touch.clientY);
+      const end_index = Number((obj as HTMLElement)?.getAttribute('data-index'));
+      if (typeof end_index === 'number' && !isNaN(end_index)) {
+        exchange(imgList.list, index, end_index);
+        updatePuzzleBlockPositions(); // 更新拼图块的位置
+      }
+    } else if (event instanceof TouchEvent) {
+      const touch = event.touches[0];
+      const obj = document.elementFromPoint(touch.clientX, touch.clientY);
+      const end_index = Number((obj as HTMLElement)?.getAttribute('data-index'));
+      if (typeof end_index === 'number' && !isNaN(end_index)) {
+        exchange(imgList.list, index, end_index);
+        updatePuzzleBlockPositions(); // 更新拼图块的位置
+      }
+    }
+  }
 }
 
+function updatePuzzleBlockPositions() {
+  const puzzleBlocks = document.querySelectorAll('.image_list');
+  puzzleBlocks.forEach((block, idx) => {
+    block.style.left = `${left(idx)}px`;
+    block.style.top = `${top(idx)}px`;
+  });
+}
 function mouseup(index: any, event: MouseEvent | TouchEvent) {
   if (event instanceof MouseEvent) {
-    const end_index = Number((event.target as HTMLElement)?.getAttribute('data-index'));
     document.removeEventListener('mousemove', (e) => mousemove(index, e));
     document.removeEventListener('mouseup', (e) => mouseup(index, e));
-    if (typeof end_index === 'number' && !isNaN(end_index)) {
-      exchange(imgList.list, index, end_index);
-    }
   } else if (event instanceof TouchEvent) {
-    const touch = event.touches[0];
-    const obj = document.elementFromPoint(touch.clientX, touch.clientY);
-    const end_index = Number((obj as HTMLElement)?.getAttribute('data-index'));
     document.removeEventListener('touchmove', (e) => mousemove(index, e));
     document.removeEventListener('touchend', (e) => mouseup(index, e));
-    if (typeof end_index === 'number' && !isNaN(end_index)) {
-      exchange(imgList.list, index, end_index);
-    }
   }
 
   if (JSON.stringify(imgList.list) === JSON.stringify(imgList.origin_list)) {
@@ -120,6 +139,7 @@ function mouseup(index: any, event: MouseEvent | TouchEvent) {
     timeList.timer_int = 0;
   }
 }
+
 
 // Timer
 let pauseTime = 0;
@@ -231,6 +251,7 @@ function restart() {
     background-image: url("/src/assets/puzzles/ef_tower.png");
     background-size: 360px;
     position: absolute;
+    will-change: transform;
     /* transition: all linear .3s; */
 }
 .hint {
