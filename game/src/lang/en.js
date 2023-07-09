@@ -24,4 +24,5 @@ export default {
   user_name: "Username",
   user_psw: "Password", 
   register: "Register",
+  register_sentence: "Please Enter your Username and Password.",
 };

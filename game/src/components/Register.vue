@@ -1,9 +1,10 @@
 <template>
   <div class="container">
+    <button class="back-button" @click="navigateTo('home')"><span v-html="backArrow"></span></button>
     <div class="card">
       <div class="card-header">
         <h3>{{ $t('register') }}</h3>
-        <span>Please enter your register details.</span>
+        <span>{{ $t('register_sentence') }}</span>
       </div>
       <div class="card-body">
         <form>
@@ -29,6 +30,7 @@ export default {
   name: 'Home',
   data() {
     return {
+      backArrow: '&#8592;',
       name: '',
       psw: '',
     }

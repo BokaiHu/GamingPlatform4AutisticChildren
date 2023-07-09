@@ -10,10 +10,10 @@
           :style="{ left: left(item) + 'px', top: top(item) + 'px', backgroundPosition: posi(index) }"
           v-for="(index, item) in imgList.list"
           :data-index="index"
-          :key="index"
-          @mousedown="mousedown(index, $event)"
-          @touchstart="mousedown(index, $event)"
-        ></div>
+          @pointerdown="mousedown(index)"
+          @pointermove="mousemove(index, $event)"
+          @pointerup="mouseup(index, $event)">
+        </div>
       </div>
     </div>
     <div class="operate">
@@ -76,70 +76,35 @@ function hint() {
     }, 3000);
 }
 // Change two pieces
+const startPoint = reactive({
+    index: 0,
+})
 function exchange(arr: any, index1: any, index2: any) {
     return arr[index2] = arr.splice(index1,1,arr[index2])[0]
 }
-let isDragging = false;
-
-function mousedown(index: any, event: MouseEvent | TouchEvent) {
-  if (event instanceof MouseEvent) {
-    isDragging = true;
-    document.addEventListener('mousemove', (e) => mousemove(index, e));
-    document.addEventListener('mouseup', (e) => mouseup(index, e));
-  } else if (event instanceof TouchEvent) {
-    isDragging = true;
-    document.addEventListener('touchmove', (e) => mousemove(index, e));
-    document.addEventListener('touchend', (e) => mouseup(index, e));
+function mousedown(index: any) {
+    startPoint.index = index
+}
+function mousemove(index: any, e: PointerEvent) {
+    e.preventDefault()
+}
+function mouseup(index: any, e: PointerEvent) {
+  let obj = document.elementFromPoint(e.clientX, e.clientY)
+  let end_index = Number(obj?.getAttribute('data-index'))
+  if (index == end_index){ // mouse
+      exchange(imgList.list, imgList.list.indexOf(startPoint.index), imgList.list.indexOf(index))
+  } else {
+      exchange(imgList.list, imgList.list.indexOf(index), imgList.list.indexOf(end_index))
+  }
+  // console.log(startPoint.index)
+  // console.log(end_index)
+  if (JSON.stringify(imgList.list) == JSON.stringify(imgList.origin_list)) {
+      console.log('已完成拼图！')
+      console.log(timer)
+      clearInterval(timeList.timer_int)
+      timeList.timer_int = 0
   }
 }
-
-function mousemove(index: any, event: MouseEvent | TouchEvent) {
-  event.preventDefault();
-  if (isDragging) {
-    if (event instanceof MouseEvent) {
-      const touch = event;
-      const obj = document.elementFromPoint(touch.clientX, touch.clientY);
-      const end_index = Number((obj as HTMLElement)?.getAttribute('data-index'));
-      if (typeof end_index === 'number' && !isNaN(end_index)) {
-        exchange(imgList.list, index, end_index);
-        updatePuzzleBlockPositions(); // 更新拼图块的位置
-      }
-    } else if (event instanceof TouchEvent) {
-      const touch = event.touches[0];
-      const obj = document.elementFromPoint(touch.clientX, touch.clientY);
-      const end_index = Number((obj as HTMLElement)?.getAttribute('data-index'));
-      if (typeof end_index === 'number' && !isNaN(end_index)) {
-        exchange(imgList.list, index, end_index);
-        updatePuzzleBlockPositions(); // 更新拼图块的位置
-      }
-    }
-  }
-}
-
-function updatePuzzleBlockPositions() {
-  const puzzleBlocks = document.querySelectorAll('.image_list');
-  puzzleBlocks.forEach((block, idx) => {
-    block.style.left = `${left(idx)}px`;
-    block.style.top = `${top(idx)}px`;
-  });
-}
-function mouseup(index: any, event: MouseEvent | TouchEvent) {
-  if (event instanceof MouseEvent) {
-    document.removeEventListener('mousemove', (e) => mousemove(index, e));
-    document.removeEventListener('mouseup', (e) => mouseup(index, e));
-  } else if (event instanceof TouchEvent) {
-    document.removeEventListener('touchmove', (e) => mousemove(index, e));
-    document.removeEventListener('touchend', (e) => mouseup(index, e));
-  }
-
-  if (JSON.stringify(imgList.list) === JSON.stringify(imgList.origin_list)) {
-    console.log('已完成拼图！');
-    console.log(timer);
-    clearInterval(timeList.timer_int);
-    timeList.timer_int = 0;
-  }
-}
-
 
 // Timer
 let pauseTime = 0;
