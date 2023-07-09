@@ -2,10 +2,10 @@
   <div class="home">
     <div class="container">
       <div class="light">{{ $t('title') }}</div>
-      <button class="button" @click="navigateTo('login')">{{ $t('startGame') }}</button>
-      <button class="button" @click="navigateTo('settings')">{{ $t('settings') }}</button>
-      <button class="button" @click="navigateTo('info')">{{ $t('info') }}</button>
-      <button class="button" @click="navigateTo('exit')">{{ $t('exit') }}</button>
+      <button class="homeButton" @click="navigateTo('login')">{{ $t('startGame') }}</button>
+      <button class="homeButton" @click="navigateTo('settings')">{{ $t('settings') }}</button>
+      <button class="homeButton" @click="navigateTo('info')">{{ $t('info') }}</button>
+      <button class="homeButton" @click="navigateTo('exit')">{{ $t('exit') }}</button>
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
   font-family: 'Roboto', sans-serif;
 }
 
-.button {
+.homeButton {
   width: 300px;
   margin: 10px;
   padding: 10px 20px;
@@ -43,7 +43,7 @@ export default {
   border-radius: 5px;
   cursor: pointer;
 }
-.button:hover {
+.homeButton:hover {
   background-color: #700756;
   border: 2px solid white;
 }
