@@ -8,7 +8,7 @@
 
 <style>
 .home-page {
-  background-color: #AF8A54;
+  background-color: #000000;
 }
 
 .container {
