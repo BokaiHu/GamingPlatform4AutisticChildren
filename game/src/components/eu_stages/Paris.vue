@@ -42,7 +42,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 function goBack() {
-  router.go(-1); // 返回上一页
+  router.go(-2); // 返回上两页
 }
 
 const imgList = reactive({

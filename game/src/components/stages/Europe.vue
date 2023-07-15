@@ -15,7 +15,7 @@ export default {
       return {
         backArrow: '&#8592;',
         buttons: [
-          { id: 1, x: 1430, y: 510, route: "paris" },
+          { id: 1, x: 1430, y: 510, route: "loading" },
           { id: 2, x: 1400, y: 430, route: "london" },
           { id: 3, x: 1670, y: 450, route: "berlin" },
           // 添加更多按钮...

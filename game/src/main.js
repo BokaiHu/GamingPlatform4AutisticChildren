@@ -3,6 +3,8 @@ import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { createI18n } from 'vue-i18n';
 import './utils/rem.js'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 import App from './App.vue'
 import Home from './components/Home.vue';
 import StartGame from './components/StartGame.vue';
@@ -18,6 +20,10 @@ import Info from './components/Info.vue';
 import Exit from './components/Exit.vue';
 import zh from './lang/zh.js';
 import en from './lang/en.js';
+import Loading from './components/Loading.vue';
+
+
+
 
 const router = createRouter({
   history: createWebHashHistory(), 
@@ -34,6 +40,7 @@ const router = createRouter({
     /* { path: '/start/north-america', name: 'north-america', component: NorthAmerica }, */
     /* { path: '/start/south-america', name: 'south-america', component: SouthAmerica }, */
     /* { path: '/start/oceania', name: 'oceania', component: Oceania }, */
+    { path: '/loading', name: 'loading', component: Loading },
   ]
 });
 
@@ -79,5 +86,6 @@ router.beforeEach((to, from, next) => {
 const app = createApp(App);
 app.use(router);
 app.use(i18n);
+app.use(ElementPlus)
 app.config.globalProperties.$i18n = i18n;
 app.mount('#app');
