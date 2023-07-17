@@ -6,7 +6,7 @@
     <div class="imgbox">
       <div class="background">
         <div
-          class="image_list"
+          class="image_paris"
           :style="{ left: left(item) + 'px', top: top(item) + 'px', backgroundPosition: posi(index) }"
           v-for="(index, item) in imgList.list"
           :data-index="index"
@@ -210,7 +210,7 @@ function restart() {
     background-color: aquamarine;
     position: relative;
 }
-.image_list{
+.image_paris{
     width: 120px;
     height: 120px;
     background-image: url("/src/assets/puzzles/ef_tower.png");

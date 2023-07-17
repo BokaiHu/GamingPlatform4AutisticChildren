@@ -16,6 +16,10 @@ import Europe from './components/stages/Europe.vue';
 import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 import Paris from './components/eu_stages/Paris.vue';
+import Berlin from './components/eu_stages/Berlin.vue';
+import Cologne from './components/eu_stages/Cologne.vue';
+import Rome from './components/eu_stages/Rome.vue';
+import London from './components/eu_stages/London.vue';
 import Settings from './components/Settings.vue';
 import Info from './components/Info.vue';
 import Exit from './components/Exit.vue';
@@ -35,6 +39,10 @@ const router = createRouter({
     /* { path: '/start/asia', name: 'asia', component: Asia }, */
     { path: '/start/europe', name: 'EU', component: Europe },
     { path: '/start/europe/paris', name: 'paris', component: Paris },
+    { path: '/start/europe/berlin', name: 'berlin', component: Berlin },
+    { path: '/start/europe/cologne', name: 'cologne', component: Cologne },
+    { path: '/start/europe/london', name: 'london', component: London },
+    { path: '/start/europe/rome', name: 'rome', component: Rome },
     /* { path: '/start/africa', name: 'africa', component: Africa }, */
     /* { path: '/start/north-america', name: 'north-america', component: NorthAmerica }, */
     /* { path: '/start/south-america', name: 'south-america', component: SouthAmerica }, */

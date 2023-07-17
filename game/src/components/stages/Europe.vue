@@ -2,22 +2,47 @@
   <div class="container0">
     <button class="back-button" @click="goBack"><span v-html="backArrow"></span></button>
     <div span="8" class="left" ref="left" @mousewheel.prevent="rollImg">
-      <img src="~@/assets/sflatEU.jpg" alt="" class="img" ref="imgDiv" @mousedown="move">
-      <button class="learn-more" v-for="button in buttons" :key="button.id" :style="buttonStyle(button)" ref="buttonDivs" @click="navigateTo(button.route)"></button>
+      <img src="~@/assets/EU_map.png" alt="" class="img" ref="imgDiv" @mousedown="move">
+      <button class="learn-more" v-for="button in buttons" :key="button.id" :style="buttonStyle(button)" ref="buttonDivs" @click="togglePopup(button.route)"></button>
     </div>
+    <transition>
+      <div v-if="showParis" class="pop-window">
+        <pop-paris msg="paris" @close="showParis=false" @navigate="navigateTo('paris')"></pop-paris>
+      </div>
+      <div v-else-if="showBerlin" class="pop-window">
+        <pop-paris msg="berlin" @close="showBerlin=false" @navigate="navigateTo('berlin')"></pop-paris>
+      </div>
+      <div v-else-if="showRome" class="pop-window">
+        <pop-paris msg="rome" @close="showRome=false" @navigate="navigateTo('rome')"></pop-paris>
+      </div>
+      <div v-else-if="showCologne" class="pop-window">
+        <pop-paris msg="cologne" @close="showCologne=false" @navigate="navigateTo('cologne')"></pop-paris>
+      </div>
+      <div v-else-if="showLondon" class="pop-window">
+        <pop-paris msg="london" @close="showLondon=false" @navigate="navigateTo('london')"></pop-paris>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
+import PopParis from '../popup_windows/pop_paris.vue'
 export default {
     name: 'Europe',
     data() {
       return {
+        showParis: false,
+        showBerlin: false,
+        showRome: false,
+        showCologne: false,
+        showLondon: false,
         backArrow: '&#8592;',
         buttons: [
-          { id: 1, x: 1430, y: 510, route: "paris" },
-          { id: 2, x: 1400, y: 430, route: "london" },
-          { id: 3, x: 1670, y: 450, route: "berlin" },
+          { id: 1, x: 1320, y: 440, route: "paris", show: false, },
+          { id: 2, x: 1295, y: 380, route: "london", show: false, },
+          { id: 3, x: 1520, y: 400, route: "berlin", show: false, },
+          { id: 4, x: 1410, y: 410, route: "cologne", show: false, },
+          { id: 5, x: 1480, y: 500, route: "rome", show: false, },
           // 添加更多按钮...
         ],
         buttonXs: [],
@@ -79,10 +104,31 @@ export default {
           this.$refs.imgDiv.style.zoom = imgZoom + "%"; 
         }
         return false; 
-      }
-    }
+      },
+      togglePopup(route) {
+        if (route === 'paris') {
+          this.showParis = !this.showParis;
+        }
+        else if (route === 'berlin') {
+          this.showBerlin = !this.showBerlin;
+        }
+        else if (route === 'rome') {
+          this.showRome = !this.showRome;
+        }
+        else if (route === 'cologne') {
+          this.showCologne = !this.showCologne;
+        }
+        else if (route === 'london') {
+          this.showLondon = !this.showLondon;
+        }
+        // 添加其他弹窗的切换逻辑
+      },
+    },
+    components: {
+      PopParis, // 注册PopParis组件
+      // 添加其他弹窗的组件
+    },
 }
-
 </script>
 
 <style>
@@ -117,15 +163,20 @@ export default {
   cursor: move;
 }
 
-.round-button {
-  top: 380px;
-  left: 500px;
-  position: absolute;
-  background-color: #ffb300;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  cursor: move;
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+/* 离开和进入过程中的样式 */
+.v-enter-active,
+.v-leave-active {
+  /* 添加过渡动画 */
+  transition: opacity 0.5s ease;
+}
+/* 进入之后和离开之前的样式 */
+.v-enter-to,
+.v-leave-from {
+  opacity: 1;
 }
 
 button.learn-more {
