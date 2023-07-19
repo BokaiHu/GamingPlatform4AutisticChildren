@@ -25,4 +25,9 @@ export default {
   user_psw: "Password", 
   register: "Register",
   register_sentence: "Please Enter your Username and Password.",
+  EiffelTower: "🇫🇷The Eiffel Tower is one of the most famous landmarks in Paris. It is a tall iron tower🗼 with a light-brownish shine. From the top of the tower, you can see the entire beautiful city of Paris, with its many lovely buildings and beautiful rivers. Let's start exploring the Eiffel Tower puzzle🧩 together!",
+  BrandenBurg: "The Brandenburg Gate is an ancient and magnificent building located in the heart of Berlin. The gate features many exquisite sculptures and murals🖼️, showcasing stories from history. The Brandenburg Gate is also one of Berlin's symbols and a popular place for tourists. Let's explore the Brandenburg Gate puzzle🧩 and learn more about this historical building!",
+  Colossal: "The Colosseum is an ancient circular building and a part of ancient Rome🏛️. Here, the ancient Romans held various events and sports competitions🥇, making it a lively place. Now, it has become an important historical site, attracting visitors from all over the world. Let's explore the Colosseum puzzle🧩 and revisit the glory of ancient times!",
+  BigBen: "Big Ben🕰️ is located in a special building in London, and it is one of the symbols of the United Kingdom. The big clock emits a melodious chime🎶 every hour. Near Big Ben, there is also the Tower Bridge🌉 and the River Thames, creating another beautiful scenery in London. Let's explore the Big Ben puzzle🧩 and see this famous building!",
+  CologneCathedral: "The Cologne Cathedral⛪ is a stunning religious✝️ building with tall spires and beautiful stained🌈 glass windows. This cathedral is one of Germany's most famous landmarks, attracting thousands of visitors every year. Let's explore the Cologne Cathedral puzzle🧩 and admire its beauty and grandeur!",
 };

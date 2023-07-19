@@ -33,6 +33,13 @@
         />
       </div>
     </div>
+    <!-- 在模板的顶部或适当的位置添加弹出窗口元素 -->
+    <div class="popup-window" v-if="isPuzzleComplete">
+      <!-- 窗口内容 -->
+      <h3>Puzzle Complete!</h3>
+      <p>Congratulations on completing the puzzle.</p>
+      <!-- 可以在窗口中添加任何你需要的内容 -->
+    </div>
   </div>
 </template>
 
@@ -40,6 +47,7 @@
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
+const isPuzzleComplete = ref(false);
 
 function goBack() {
   router.go(-1); // 返回上一页
@@ -99,10 +107,11 @@ function mouseup(index: any, e: PointerEvent) {
   // console.log(startPoint.index)
   // console.log(end_index)
   if (JSON.stringify(imgList.list) == JSON.stringify(imgList.origin_list)) {
-      console.log('已完成拼图！')
-      console.log(timer)
-      clearInterval(timeList.timer_int)
-      timeList.timer_int = 0
+    console.log('已完成拼图！');
+    clearInterval(timeList.timer_int);
+    timeList.timer_int = 0;
+    isPuzzleComplete.value = true;
+    isStarted.value = false;
   }
 }
 
@@ -123,9 +132,23 @@ const timeList = reactive({
 const isStarted = ref(false); // 跟踪游戏是否已经开始
 // 启动游戏
 function startGame() {
+  isPuzzleComplete.value = false;
   isStarted.value = true; // 标记游戏已开始
   start(); // 开始计时和打乱拼图
+
+  // 在拼图完成检查定时器
+  const checkCompletionTimer = setInterval(() => {
+    if (JSON.stringify(imgList.list) === JSON.stringify(imgList.origin_list)) {
+      console.log('已完成拼图！');
+      clearInterval(timeList.timer_int);
+      timeList.timer_int = 0;
+      isPuzzleComplete.value = true;
+      isStarted.value = false;
+      clearInterval(checkCompletionTimer); // 停止拼图完成检查定时器
+    }
+  }, 1000);
 }
+
 function start() {
     timeList.startTime = new Date()
     breakUp()
@@ -147,7 +170,7 @@ function pause() {
   }
 }
 function resume() {
-  if (timeList.timer_int === 0) {
+  if (isStarted.value && timeList.timer_int === 0) {
     timeList.startTime = new Date(new Date() - pauseTime);
     timeList.timer_int = setInterval(() => {
       let tm = new Date();
@@ -159,8 +182,9 @@ function resume() {
   }
 }
 function restart() {
-  isStarted.value = true;
-  startGame(); // 重新打乱拼图
+  isStarted.value = false; // 停止游戏
+  clearInterval(timeList.timer_int); // 清除计时器
+  startGame(); // 重新打乱拼图并开始游戏
 }
 </script>
 
@@ -223,5 +247,14 @@ function restart() {
     width: 200px;
     height: 200px;
     margin-top: 20px;
+}
+.popup-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 </style>

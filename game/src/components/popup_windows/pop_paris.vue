@@ -12,11 +12,11 @@
 
       <!-- 右侧文字介绍 -->
       <div class="text-container">
-        <p v-if="msg === 'paris'">This is the Eiffel Tower.</p>
-        <p v-else-if="msg === 'berlin'">This is the brandenburg gate.</p>
-        <p v-else-if="msg === 'rome'">This is the Colossal.</p>
-        <p v-else-if="msg === 'london'">This is the Big Ben.</p>
-        <p v-else-if="msg === 'cologne'">This is the Cologne Cathedral.</p>
+        <p v-if="msg === 'paris'">{{ $t('EiffelTower') }}</p>
+        <p v-else-if="msg === 'berlin'">{{ $t('BrandenBurg') }}</p>
+        <p v-else-if="msg === 'rome'">{{ $t('Colossal') }}</p>
+        <p v-else-if="msg === 'london'">{{ $t('BigBen') }}</p>
+        <p v-else-if="msg === 'cologne'">{{ $t('CologneCathedral') }}</p>
       </div>
     </div>
 
@@ -65,18 +65,22 @@ const navigation = () => {
 }
 
 .image-container img {
-  margin: 0;
-  width: 50%;
+  width: 100%;
   height: auto;
 }
 
 .text-container {
+  flex: 1; /* 文字占满剩余空间 */
   padding: 0 20px;
+  font-size: 18px; /* 设置文字大小为18像素 */
+  line-height: 1.6; /* 设置行间距为1.6倍文字大小 */
+  text-align: justify; /* 实现两端对齐效果 */
 }
 
 .i-t {
   margin: 0;
   display: flex; /* 设置图片和文字水平排列 */
+  flex-wrap: wrap; /* 自动换行 */
   color: #fff;
 }
 
