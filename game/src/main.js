@@ -4,6 +4,8 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import { createI18n } from 'vue-i18n';
 import axios from 'axios';
 import './utils/rem.js'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 import App from './App.vue'
 import Home from './components/Home.vue';
 import StartGame from './components/StartGame.vue';
@@ -23,6 +25,11 @@ import London from './components/eu_stages/London.vue';
 import Settings from './components/Settings.vue';
 import Info from './components/Info.vue';
 import Exit from './components/Exit.vue';
+import LoadingParis from './components/LoadingParis.vue';
+import LoadingBerlin from './components/LoadingBerlin.vue';
+import LoadingCologne from './components/LoadingCologne.vue';
+import LoadingLondon from './components/LoadingLondon.vue';
+import LoadingRome from './components/LoadingRome.vue';
 import zh from './lang/zh.js';
 import en from './lang/en.js';
 
@@ -47,6 +54,11 @@ const router = createRouter({
     /* { path: '/start/north-america', name: 'north-america', component: NorthAmerica }, */
     /* { path: '/start/south-america', name: 'south-america', component: SouthAmerica }, */
     /* { path: '/start/oceania', name: 'oceania', component: Oceania }, */
+    { path: '/loadingparis', name: 'loadingparis', component: LoadingParis },
+    { path: '/loadingberlin', name: 'loadingberlin', component: LoadingBerlin },
+    { path: '/loadingcologne', name: 'loadingcologne', component: LoadingCologne },
+    { path: '/loadinglondon', name: 'loadinglondon', component: LoadingLondon },
+    { path: '/loadingrome', name: 'loadingrome', component: LoadingRome },
   ]
 });
 
@@ -92,6 +104,7 @@ router.beforeEach((to, from, next) => {
 const app = createApp(App);
 app.use(router);
 app.use(i18n);
+app.use(ElementPlus)
 app.config.globalProperties.$i18n = i18n;
 app.mount('#app');
 

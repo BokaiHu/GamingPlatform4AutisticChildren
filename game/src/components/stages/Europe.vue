@@ -7,19 +7,19 @@
     </div>
     <transition>
       <div v-if="showParis" class="pop-window">
-        <pop-paris msg="paris" @close="showParis=false" @navigate="navigateTo('paris')"></pop-paris>
+        <pop-paris msg="paris" @close="showParis=false" @navigate="navigateTo('loadingparis')"></pop-paris>
       </div>
       <div v-else-if="showBerlin" class="pop-window">
-        <pop-paris msg="berlin" @close="showBerlin=false" @navigate="navigateTo('berlin')"></pop-paris>
+        <pop-paris msg="berlin" @close="showBerlin=false" @navigate="navigateTo('loadingberlin')"></pop-paris>
       </div>
       <div v-else-if="showRome" class="pop-window">
-        <pop-paris msg="rome" @close="showRome=false" @navigate="navigateTo('rome')"></pop-paris>
+        <pop-paris msg="rome" @close="showRome=false" @navigate="navigateTo('loadingrome')"></pop-paris>
       </div>
       <div v-else-if="showCologne" class="pop-window">
-        <pop-paris msg="cologne" @close="showCologne=false" @navigate="navigateTo('cologne')"></pop-paris>
+        <pop-paris msg="cologne" @close="showCologne=false" @navigate="navigateTo('loadingcologne')"></pop-paris>
       </div>
       <div v-else-if="showLondon" class="pop-window">
-        <pop-paris msg="london" @close="showLondon=false" @navigate="navigateTo('london')"></pop-paris>
+        <pop-paris msg="london" @close="showLondon=false" @navigate="navigateTo('loadinglondon')"></pop-paris>
       </div>
     </transition>
   </div>

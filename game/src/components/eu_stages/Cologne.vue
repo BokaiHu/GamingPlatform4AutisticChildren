@@ -69,7 +69,7 @@ function audioFinished() {
 }
 
 function goBack() {
-  router.go(-1); // 返回上一页
+  router.go(-2); // 返回上一页
 }
 const imgList = reactive({
     list: [0, 1, 2, 3, 4, 5, 6, 7, 8],
