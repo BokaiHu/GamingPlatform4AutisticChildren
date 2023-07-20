@@ -40,6 +40,7 @@
       <p>Congratulations on completing the puzzle.</p>
       <!-- 可以在窗口中添加任何你需要的内容 -->
     </div>
+    <audio :src="bgmSrc" autoplay controls @ended="audioFinished"></audio>
   </div>
 </template>
 
@@ -48,6 +49,25 @@ import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 const isPuzzleComplete = ref(false);
+const canMovePuzzle = ref(false);
+
+// BGM control
+const bgmId = ref(0);
+const bgmList = [
+  ('/bgms/carmen.mp3'),
+  ('/bgms/leschampselysees.mp3'),
+  ('/bgms/lavieenrose.mp3'),
+];
+const bgmSrc = ref(bgmList[bgmId.value]);
+function audioFinished() {
+  console.log('over');
+  if (bgmId.value < bgmList.length - 1) {
+    bgmId.value++;
+  } else {
+    bgmId.value = 0;
+  }
+  bgmSrc.value = bgmList[bgmId.value];
+}
 
 function goBack() {
   router.go(-1); // 返回上一页
@@ -99,19 +119,12 @@ function mousemove(index: any, e: PointerEvent) {
 function mouseup(index: any, e: PointerEvent) {
   let obj = document.elementFromPoint(e.clientX, e.clientY)
   let end_index = Number(obj?.getAttribute('data-index'))
-  if (index == end_index){ // mouse
-      exchange(imgList.list, imgList.list.indexOf(startPoint.index), imgList.list.indexOf(index))
-  } else {
-      exchange(imgList.list, imgList.list.indexOf(index), imgList.list.indexOf(end_index))
-  }
-  // console.log(startPoint.index)
-  // console.log(end_index)
-  if (JSON.stringify(imgList.list) == JSON.stringify(imgList.origin_list)) {
-    console.log('已完成拼图！');
-    clearInterval(timeList.timer_int);
-    timeList.timer_int = 0;
-    isPuzzleComplete.value = true;
-    isStarted.value = false;
+  if (canMovePuzzle.value) {
+    if (index == end_index){ // mouse
+        exchange(imgList.list, imgList.list.indexOf(startPoint.index), imgList.list.indexOf(index))
+    } else {
+        exchange(imgList.list, imgList.list.indexOf(index), imgList.list.indexOf(end_index))
+    }
   }
 }
 
@@ -135,6 +148,7 @@ function startGame() {
   isPuzzleComplete.value = false;
   isStarted.value = true; // 标记游戏已开始
   start(); // 开始计时和打乱拼图
+  canMovePuzzle.value = true; // 允许移动拼图块
 
   // 在拼图完成检查定时器
   const checkCompletionTimer = setInterval(() => {
@@ -144,9 +158,10 @@ function startGame() {
       timeList.timer_int = 0;
       isPuzzleComplete.value = true;
       isStarted.value = false;
+      canMovePuzzle.value = false; // 完成拼图后禁止移动拼图块
       clearInterval(checkCompletionTimer); // 停止拼图完成检查定时器
     }
-  }, 1000);
+  }, 10);
 }
 
 function start() {
@@ -167,6 +182,7 @@ function pause() {
     timeList.timer_int = 0;
     let currentTime = new Date();
     pauseTime = currentTime - timeList.startTime;
+    canMovePuzzle.value = false; // 禁止移动拼图块
   }
 }
 function resume() {
@@ -179,6 +195,7 @@ function resume() {
       timer.s = new Date(usedTime).getSeconds();
       timer.ms = new Date(usedTime).getMilliseconds();
     }, 10);
+    canMovePuzzle.value = true; // 允许移动拼图块
   }
 }
 function restart() {

@@ -30,4 +30,9 @@ export default {
   Colossal: "The Colosseum is an ancient circular building and a part of ancient Rome🏛️. Here, the ancient Romans held various events and sports competitions🥇, making it a lively place. Now, it has become an important historical site, attracting visitors from all over the world. Let's explore the Colosseum puzzle🧩 and revisit the glory of ancient times!",
   BigBen: "Big Ben🕰️ is located in a special building in London, and it is one of the symbols of the United Kingdom. The big clock emits a melodious chime🎶 every hour. Near Big Ben, there is also the Tower Bridge🌉 and the River Thames, creating another beautiful scenery in London. Let's explore the Big Ben puzzle🧩 and see this famous building!",
   CologneCathedral: "The Cologne Cathedral⛪ is a stunning religious✝️ building with tall spires and beautiful stained🌈 glass windows. This cathedral is one of Germany's most famous landmarks, attracting thousands of visitors every year. Let's explore the Cologne Cathedral puzzle🧩 and admire its beauty and grandeur!",
+  parisIntro: "Wanna know more about the Eiffel Tower? Click Here!", 
+  londonIntro: "More fun facts about the Big Ben here!", 
+  berlinIntro: "More fun facts about the Brandenburg Gate here!", 
+  cologneIntro: "Click to go through the history of Cologne Cathedral here.", 
+  romeIntro: "More fun facts about the Colosseum here!", 
 };

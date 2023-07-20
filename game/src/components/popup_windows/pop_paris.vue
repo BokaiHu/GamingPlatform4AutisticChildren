@@ -12,11 +12,41 @@
 
       <!-- 右侧文字介绍 -->
       <div class="text-container">
-        <p v-if="msg === 'paris'">{{ $t('EiffelTower') }}</p>
-        <p v-else-if="msg === 'berlin'">{{ $t('BrandenBurg') }}</p>
-        <p v-else-if="msg === 'rome'">{{ $t('Colossal') }}</p>
-        <p v-else-if="msg === 'london'">{{ $t('BigBen') }}</p>
-        <p v-else-if="msg === 'cologne'">{{ $t('CologneCathedral') }}</p>
+        <p v-if="msg === 'paris'">
+          {{ $t('EiffelTower') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=qgewyDj3ZnA" target="_blank">{{ $t('parisIntro') }}</a>
+          <br>
+          <audio src="/intro_audios/EiffelTower.mp3" controls="true" autoplay="true"></audio>
+        </p>
+        <p v-else-if="msg === 'berlin'">
+          {{ $t('BrandenBurg') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=vvIacr85Sjo" target="_blank">{{ $t('berlinIntro') }}</a>
+          <br>
+          <audio src="/intro_audios/BrandenburgGate.mp3" controls="true" autoplay="true"></audio>
+        </p>
+        <p v-else-if="msg === 'rome'">
+          {{ $t('Colossal') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=U6oPfmJcU8s" target="_blank">{{ $t('romeIntro') }}</a>
+          <br>
+          <audio src="/intro_audios/Colosseum.mp3" controls="true" autoplay="true"></audio>
+        </p>
+        <p v-else-if="msg === 'london'">
+          {{ $t('BigBen') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=tpYwWK7Xgvc" target="_blank">{{ $t('londonIntro') }}</a>
+          <br>
+          <audio src="/intro_audios/BigBen.mp3" controls="true" autoplay="true"></audio>
+        </p>
+        <p v-else-if="msg === 'cologne'">
+          {{ $t('CologneCathedral') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=rzQZuQBm074" target="_blank">{{ $t('cologneIntro') }}</a>
+          <br>
+          <audio src="/intro_audios/CologneCathedral.mp3" controls="true" autoplay="true"></audio>
+        </p>
       </div>
     </div>
 
