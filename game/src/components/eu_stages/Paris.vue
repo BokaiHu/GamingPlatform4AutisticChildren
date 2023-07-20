@@ -44,9 +44,12 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import carmen from '@/assets/bgms/carmen.mp3';
+import leschampselysees from '@/assets/bgms/leschampselysees.mp3';
+import lavieenrose from '@/assets/bgms/lavieenrose.mp3';
 const router = useRouter();
 const isPuzzleComplete = ref(false);
 const canMovePuzzle = ref(false);
@@ -54,9 +57,9 @@ const canMovePuzzle = ref(false);
 // BGM control
 const bgmId = ref(0);
 const bgmList = [
-  ('/bgms/carmen.mp3'),
-  ('/bgms/leschampselysees.mp3'),
-  ('/bgms/lavieenrose.mp3'),
+  (carmen),
+  (leschampselysees),
+  (lavieenrose),
 ];
 const bgmSrc = ref(bgmList[bgmId.value]);
 function audioFinished() {
@@ -77,15 +80,15 @@ const imgList = reactive({
     origin_list: [0, 1, 2, 3, 4, 5, 6, 7, 8],
 })
 // Compute the postion of each piece of the puzzle
-function posi(index: any){
+function posi(index){
     let left = -(index%3) * 120;
     let top = -(Math.ceil((index+1)/3) - 1) * 120;
     return `${left}px ${top}px`;
 }
-function left(item: any){
+function left(item){
     return item%3*120
 }
-function top(item: any) {
+function top(item) {
     return (Math.ceil((item+1)/3) - 1) * 120;
 }
 // Break up the puzzle pieces
@@ -107,16 +110,16 @@ function hint() {
 const startPoint = reactive({
     index: 0,
 })
-function exchange(arr: any, index1: any, index2: any) {
+function exchange(arr, index1, index2) {
     return arr[index2] = arr.splice(index1,1,arr[index2])[0]
 }
-function mousedown(index: any) {
+function mousedown(index) {
     startPoint.index = index
 }
-function mousemove(index: any, e: PointerEvent) {
+function mousemove(index, e) {
     e.preventDefault()
 }
-function mouseup(index: any, e: PointerEvent) {
+function mouseup(index, e) {
   let obj = document.elementFromPoint(e.clientX, e.clientY)
   let end_index = Number(obj?.getAttribute('data-index'))
   if (canMovePuzzle.value) {
@@ -135,7 +138,7 @@ const timer = reactive({
     s: 0,
     ms: 0,
 })
-function setTime(s: any) {
+function setTime(s) {
     return (s < 10 ? '0' + s : s > 100 ? parseInt(s/10) : s)
 }
 const timeList = reactive({

@@ -43,9 +43,12 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import Bach_PreludeCmajor from '@/assets/bgms/Bach_PreludeCmajor.mp3';
+import Beethoven_pathetique from '@/assets/bgms/Beethoven_pathetique.mp3';
+import Mozart_littlestar from '@/assets/bgms/Mozart_littlestar.mp3';
 const router = useRouter();
 const isPuzzleComplete = ref(false);
 const canMovePuzzle = ref(false);
@@ -53,154 +56,154 @@ const canMovePuzzle = ref(false);
 // BGM control
 const bgmId = ref(0);
 const bgmList = [
-  ('/bgms/Mozart_littlestar.mp3'),
-  ('/bgms/Beethoven_pathetique.mp3'),
-  ('/bgms/Bach_PreludeCmajor.mp3'),
+(Bach_PreludeCmajor),
+(Beethoven_pathetique),
+(Mozart_littlestar),
 ];
 const bgmSrc = ref(bgmList[bgmId.value]);
 function audioFinished() {
-  console.log('over');
-  if (bgmId.value < bgmList.length - 1) {
-    bgmId.value++;
-  } else {
-    bgmId.value = 0;
-  }
-  bgmSrc.value = bgmList[bgmId.value];
+console.log('over');
+if (bgmId.value < bgmList.length - 1) {
+  bgmId.value++;
+} else {
+  bgmId.value = 0;
+}
+bgmSrc.value = bgmList[bgmId.value];
 }
 
 function goBack() {
   router.go(-2); // 返回上一页
 }
 const imgList = reactive({
-    list: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-    origin_list: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+  list: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+  origin_list: [0, 1, 2, 3, 4, 5, 6, 7, 8],
 })
 // Compute the postion of each piece of the puzzle
-function posi(index: any){
-    let left = -(index%3) * 120;
-    let top = -(Math.ceil((index+1)/3) - 1) * 120;
-    return `${left}px ${top}px`;
+function posi(index){
+  let left = -(index%3) * 120;
+  let top = -(Math.ceil((index+1)/3) - 1) * 120;
+  return `${left}px ${top}px`;
 }
-function left(item: any){
-    return item%3*120
+function left(item){
+  return item%3*120
 }
-function top(item: any) {
-    return (Math.ceil((item+1)/3) - 1) * 120;
+function top(item) {
+  return (Math.ceil((item+1)/3) - 1) * 120;
 }
 // Break up the puzzle pieces
 function breakUp(){
-    imgList.list.sort(function(a,b){ return Math.random()-0.5})
-    // console.log('imgList: ', imgList.list)
+  imgList.list.sort(function(a,b){ return Math.random()-0.5})
+  // console.log('imgList: ', imgList.list)
 }
 // Hint
 const display = reactive({
-    value: 'none'
+  value: 'none'
 })
 function hint() {
-    display.value = 'block';
-    setTimeout(() => {
-        display.value = 'none';
-    }, 3000);
+  display.value = 'block';
+  setTimeout(() => {
+      display.value = 'none';
+  }, 3000);
 }
 // Change two pieces
 const startPoint = reactive({
-    index: 0,
+  index: 0,
 })
-function exchange(arr: any, index1: any, index2: any) {
-    return arr[index2] = arr.splice(index1,1,arr[index2])[0]
+function exchange(arr, index1, index2) {
+  return arr[index2] = arr.splice(index1,1,arr[index2])[0]
 }
-function mousedown(index: any) {
-    startPoint.index = index
+function mousedown(index) {
+  startPoint.index = index
 }
-function mousemove(index: any, e: PointerEvent) {
-    e.preventDefault()
+function mousemove(index, e) {
+  e.preventDefault()
 }
-function mouseup(index: any, e: PointerEvent) {
-  let obj = document.elementFromPoint(e.clientX, e.clientY)
-  let end_index = Number(obj?.getAttribute('data-index'))
-  if (canMovePuzzle.value) {
-    if (index == end_index){ // mouse
-        exchange(imgList.list, imgList.list.indexOf(startPoint.index), imgList.list.indexOf(index))
-    } else {
-        exchange(imgList.list, imgList.list.indexOf(index), imgList.list.indexOf(end_index))
-    }
+function mouseup(index, e) {
+let obj = document.elementFromPoint(e.clientX, e.clientY)
+let end_index = Number(obj?.getAttribute('data-index'))
+if (canMovePuzzle.value) {
+  if (index == end_index){ // mouse
+      exchange(imgList.list, imgList.list.indexOf(startPoint.index), imgList.list.indexOf(index))
+  } else {
+      exchange(imgList.list, imgList.list.indexOf(index), imgList.list.indexOf(end_index))
   }
+}
 }
 
 // Timer
 let pauseTime = 0;
 const timer = reactive({
-    m: 0,
-    s: 0,
-    ms: 0,
+  m: 0,
+  s: 0,
+  ms: 0,
 })
-function setTime(s: any) {
-    return (s < 10 ? '0' + s : s > 100 ? parseInt(s/10) : s)
+function setTime(s) {
+  return (s < 10 ? '0' + s : s > 100 ? parseInt(s/10) : s)
 }
 const timeList = reactive({
-    startTime: new Date(),
-    timer_int: 0,
+  startTime: new Date(),
+  timer_int: 0,
 })
 const isStarted = ref(false); // 跟踪游戏是否已经开始
 // 启动游戏
 function startGame() {
-  isPuzzleComplete.value = false;
-  isStarted.value = true; // 标记游戏已开始
-  start(); // 开始计时和打乱拼图
-  canMovePuzzle.value = true; // 允许移动拼图块
+isPuzzleComplete.value = false;
+isStarted.value = true; // 标记游戏已开始
+start(); // 开始计时和打乱拼图
+canMovePuzzle.value = true; // 允许移动拼图块
 
-  // 在拼图完成检查定时器
-  const checkCompletionTimer = setInterval(() => {
-    if (JSON.stringify(imgList.list) === JSON.stringify(imgList.origin_list)) {
-      console.log('已完成拼图！');
-      clearInterval(timeList.timer_int);
-      timeList.timer_int = 0;
-      isPuzzleComplete.value = true;
-      isStarted.value = false;
-      canMovePuzzle.value = false; // 完成拼图后禁止移动拼图块
-      clearInterval(checkCompletionTimer); // 停止拼图完成检查定时器
-    }
-  }, 10);
+// 在拼图完成检查定时器
+const checkCompletionTimer = setInterval(() => {
+  if (JSON.stringify(imgList.list) === JSON.stringify(imgList.origin_list)) {
+    console.log('已完成拼图！');
+    clearInterval(timeList.timer_int);
+    timeList.timer_int = 0;
+    isPuzzleComplete.value = true;
+    isStarted.value = false;
+    canMovePuzzle.value = false; // 完成拼图后禁止移动拼图块
+    clearInterval(checkCompletionTimer); // 停止拼图完成检查定时器
+  }
+}, 10);
 }
 
 function start() {
-    timeList.startTime = new Date()
-    breakUp()
-    timeList.timer_int = setInterval(() => {
-        let tm = new Date()
-        let usedTime = tm - timeList.startTime
-        timer.m = new Date(usedTime).getMinutes()
-        timer.s = new Date(usedTime).getSeconds()
-        timer.ms = new Date(usedTime).getMilliseconds()
-        // console.log(timer)
-    })
+  timeList.startTime = new Date()
+  breakUp()
+  timeList.timer_int = setInterval(() => {
+      let tm = new Date()
+      let usedTime = tm - timeList.startTime
+      timer.m = new Date(usedTime).getMinutes()
+      timer.s = new Date(usedTime).getSeconds()
+      timer.ms = new Date(usedTime).getMilliseconds()
+      // console.log(timer)
+  })
 }
 function pause() {
-  if (isStarted.value && timeList.timer_int !== 0) {
-    clearInterval(timeList.timer_int);
-    timeList.timer_int = 0;
-    let currentTime = new Date();
-    pauseTime = currentTime - timeList.startTime;
-    canMovePuzzle.value = false; // 禁止移动拼图块
-  }
+if (isStarted.value && timeList.timer_int !== 0) {
+  clearInterval(timeList.timer_int);
+  timeList.timer_int = 0;
+  let currentTime = new Date();
+  pauseTime = currentTime - timeList.startTime;
+  canMovePuzzle.value = false; // 禁止移动拼图块
+}
 }
 function resume() {
-  if (isStarted.value && timeList.timer_int === 0) {
-    timeList.startTime = new Date(new Date() - pauseTime);
-    timeList.timer_int = setInterval(() => {
-      let tm = new Date();
-      let usedTime = tm - timeList.startTime;
-      timer.m = new Date(usedTime).getMinutes();
-      timer.s = new Date(usedTime).getSeconds();
-      timer.ms = new Date(usedTime).getMilliseconds();
-    }, 10);
-    canMovePuzzle.value = true; // 允许移动拼图块
-  }
+if (isStarted.value && timeList.timer_int === 0) {
+  timeList.startTime = new Date(new Date() - pauseTime);
+  timeList.timer_int = setInterval(() => {
+    let tm = new Date();
+    let usedTime = tm - timeList.startTime;
+    timer.m = new Date(usedTime).getMinutes();
+    timer.s = new Date(usedTime).getSeconds();
+    timer.ms = new Date(usedTime).getMilliseconds();
+  }, 10);
+  canMovePuzzle.value = true; // 允许移动拼图块
+}
 }
 function restart() {
-  isStarted.value = false; // 停止游戏
-  clearInterval(timeList.timer_int); // 清除计时器
-  startGame(); // 重新打乱拼图并开始游戏
+isStarted.value = false; // 停止游戏
+clearInterval(timeList.timer_int); // 清除计时器
+startGame(); // 重新打乱拼图并开始游戏
 }
 </script>
   
