@@ -35,4 +35,11 @@ export default {
   berlinIntro: "More fun facts about the Brandenburg Gate here!", 
   cologneIntro: "Click to go through the history of Cologne Cathedral here.", 
   romeIntro: "More fun facts about the Colosseum here!", 
+  ReturnToMainStages: "Return to the Stage Selection Page.", 
+  close: "Close",
+  ToFrance: "Click here to know more about France",
+  FrenchCuisine: "French cuisine is renowned worldwide, boasting a variety of delicious signature dishes. Among them, the most famous pastry are the baguette and macaron.",
+  FrenchCars: "The French car brand Bugatti, born in 1909, is a representation of luxury sports cars and is acclaimed as the 'jewel of automobiles'.",
+  FrenchCuisineLink: "Here's the French cuisine!",
+  FrenchCarsLink: "Here's the French cars!"
 };

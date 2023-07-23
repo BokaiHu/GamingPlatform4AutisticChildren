@@ -7,19 +7,19 @@
     </div>
     <transition>
       <div v-if="showParis" class="pop-window">
-        <pop-paris msg="paris" @close="showParis=false" @navigate="navigateTo('loadingparis')"></pop-paris>
+        <pop-paris msg="paris" @close="showParis=false" @navigate="navigateTo('paris')"></pop-paris>
       </div>
       <div v-else-if="showBerlin" class="pop-window">
-        <pop-paris msg="berlin" @close="showBerlin=false" @navigate="navigateTo('loadingberlin')"></pop-paris>
+        <pop-paris msg="berlin" @close="showBerlin=false" @navigate="navigateTo('berlin')"></pop-paris>
       </div>
       <div v-else-if="showRome" class="pop-window">
-        <pop-paris msg="rome" @close="showRome=false" @navigate="navigateTo('loadingrome')"></pop-paris>
+        <pop-paris msg="rome" @close="showRome=false" @navigate="navigateTo('rome')"></pop-paris>
       </div>
       <div v-else-if="showCologne" class="pop-window">
-        <pop-paris msg="cologne" @close="showCologne=false" @navigate="navigateTo('loadingcologne')"></pop-paris>
+        <pop-paris msg="cologne" @close="showCologne=false" @navigate="navigateTo('cologne')"></pop-paris>
       </div>
       <div v-else-if="showLondon" class="pop-window">
-        <pop-paris msg="london" @close="showLondon=false" @navigate="navigateTo('loadinglondon')"></pop-paris>
+        <pop-paris msg="london" @close="showLondon=false" @navigate="navigateTo('london')"></pop-paris>
       </div>
     </transition>
   </div>
@@ -108,18 +108,38 @@ export default {
       togglePopup(route) {
         if (route === 'paris') {
           this.showParis = !this.showParis;
+          this.showBerlin = false;
+          this.showRome = false;
+          this.showCologne = false;
+          this.showLondon = false;
         }
         else if (route === 'berlin') {
           this.showBerlin = !this.showBerlin;
+          this.showParis = false;
+          this.showRome = false;
+          this.showCologne = false;
+          this.showLondon = false;
         }
         else if (route === 'rome') {
           this.showRome = !this.showRome;
+          this.showParis = false;
+          this.showBerlin = false;
+          this.showCologne = false;
+          this.showLondon = false;
         }
         else if (route === 'cologne') {
           this.showCologne = !this.showCologne;
+          this.showParis = false;
+          this.showBerlin = false;
+          this.showRome = false;
+          this.showLondon = false;
         }
         else if (route === 'london') {
           this.showLondon = !this.showLondon;
+          this.showParis = false;
+          this.showBerlin = false;
+          this.showRome = false;
+          this.showCologne = false;
         }
         // 添加其他弹窗的切换逻辑
       },

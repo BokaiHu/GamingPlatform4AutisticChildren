@@ -35,4 +35,11 @@ export default {
   berlinIntro: "这里有更多关于勃兰登堡门的有趣知识！", 
   cologneIntro: "点击这里了解科隆大教堂的历史。", 
   romeIntro: "点击这里了解更多关于罗马竞技场的知识！", 
+  ReturnToMainStages: "返回关卡选择", 
+  close: "关闭",
+  ToFrance: "点击这里走进法国",
+  FrenchCuisine: "法国的饮食是世界闻名的，拥有许多美味的特色食物。其中，最著名的面食包括法棍和马卡龙。",
+  FrenchCars: "诞生于1909年的法国汽车品牌布加迪，是豪华跑车的代表，被誉为“汽车中的珠宝”。",
+  FrenchCuisineLink: "法国美食在这里！",
+  FrenchCarsLink: "法国汽车在这里！"
 };

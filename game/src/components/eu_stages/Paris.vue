@@ -34,13 +34,18 @@
       </div>
     </div>
     <!-- 在模板的顶部或适当的位置添加弹出窗口元素 -->
-    <div class="popup-window" v-if="isPuzzleComplete">
-      <!-- 窗口内容 -->
-      <h3>Puzzle Complete!</h3>
-      <p>Congratulations on completing the puzzle.</p>
-      <!-- 可以在窗口中添加任何你需要的内容 -->
-    </div>
-    <audio :src="bgmSrc" autoplay controls @ended="audioFinished"></audio>
+    <transition>
+      <div class="popup-window" v-if="isPuzzleComplete & !HideNotShow">
+        <h3>Puzzle Complete!</h3>
+        <button @click="HideNotShow = true">{{ $t("ToFrance") }}</button>
+      </div>
+    </transition>
+    <transition>
+      <div class="popup-window" v-if="isPuzzleComplete & HideNotShow">
+        <Complete msg="paris" @close="isPuzzleComplete=false, HideNotShow=false" @navigate="navigateTo('EU')"></Complete>
+      </div>
+    </transition>
+    <audio v-if="isPuzzleComplete === false" :src="bgmSrc" autoplay controls @ended="audioFinished"></audio>
   </div>
 </template>
 
@@ -50,18 +55,25 @@ import { useRouter } from 'vue-router';
 import carmen from '@/assets/bgms/carmen.mp3';
 import leschampselysees from '@/assets/bgms/leschampselysees.mp3';
 import lavieenrose from '@/assets/bgms/lavieenrose.mp3';
+import Complete from '../popup_windows/complete_pop.vue';
 const router = useRouter();
 const isPuzzleComplete = ref(false);
 const canMovePuzzle = ref(false);
+const HideNotShow = ref(false);
 
 // BGM control
 const bgmId = ref(0);
 const bgmList = [
-  (carmen),
   (leschampselysees),
   (lavieenrose),
+  (carmen),
 ];
 const bgmSrc = ref(bgmList[bgmId.value]);
+
+function navigateTo(routeName) {
+  router.push({ name: routeName });
+}
+
 function audioFinished() {
   console.log('over');
   if (bgmId.value < bgmList.length - 1) {
@@ -73,7 +85,7 @@ function audioFinished() {
 }
 
 function goBack() {
-  router.go(-2); // 返回上两页
+  router.go(-1); // 返回上两页
 }
 const imgList = reactive({
     list: [0, 1, 2, 3, 4, 5, 6, 7, 8],
@@ -273,7 +285,7 @@ function restart() {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: #c5a3e6;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

@@ -9,7 +9,6 @@
         <img v-else-if="msg === 'london'" src="~@/assets/puzzles/big_ben.jpg" />
         <img v-else-if="msg === 'cologne'" src="~@/assets/puzzles/cologne_cathedral.jpg" />
       </div>
-
       <!-- 右侧文字介绍 -->
       <div class="text-container">
         <p v-if="msg === 'paris'">
