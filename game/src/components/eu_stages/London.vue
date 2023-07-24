@@ -46,9 +46,9 @@
 <script setup>
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import Bach_PreludeCmajor from '@/assets/bgms/Bach_PreludeCmajor.mp3';
-import Beethoven_pathetique from '@/assets/bgms/Beethoven_pathetique.mp3';
-import Mozart_littlestar from '@/assets/bgms/Mozart_littlestar.mp3';
+import EdwardEdgar_LoHaG from '@/assets/bgms/EdwardEdgar_LoHaG.mp3';
+import EdwardEdgar_PaC from '@/assets/bgms/EdwardEdgar_PaC.mp3';
+import EdwardEdgar_S from '@/assets/bgms/EdwardEdgar_Sda.mp3';
 const router = useRouter();
 const isPuzzleComplete = ref(false);
 const canMovePuzzle = ref(false);
@@ -56,9 +56,9 @@ const canMovePuzzle = ref(false);
 // BGM control
 const bgmId = ref(0);
 const bgmList = [
-(Bach_PreludeCmajor),
-(Beethoven_pathetique),
-(Mozart_littlestar),
+(EdwardEdgar_LoHaG),
+(EdwardEdgar_S),
+(EdwardEdgar_PaC),
 ];
 const bgmSrc = ref(bgmList[bgmId.value]);
 function audioFinished() {
