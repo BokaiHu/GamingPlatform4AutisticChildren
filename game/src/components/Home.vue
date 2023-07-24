@@ -1,12 +1,10 @@
 <template>
-  <div class="home">
-    <div class="container">
-      <div class="light">{{ $t('title') }}</div>
-      <button class="homeButton" @click="navigateTo('login')">{{ $t('startGame') }}</button>
-      <button class="homeButton" @click="navigateTo('settings')">{{ $t('settings') }}</button>
-      <button class="homeButton" @click="navigateTo('info')">{{ $t('info') }}</button>
-      <button class="homeButton" @click="navigateTo('exit')">{{ $t('exit') }}</button>
-    </div>
+  <div class="container">
+    <div class="light">{{ $t('title') }}</div>
+    <button class="homeButton" @click="navigateTo('login')">{{ $t('startGame') }}</button>
+    <button class="homeButton" @click="navigateTo('settings')">{{ $t('settings') }}</button>
+    <button class="homeButton" @click="navigateTo('info')">{{ $t('info') }}</button>
+    <button class="homeButton" @click="navigateTo('exit')">{{ $t('exit') }}</button>
   </div>
 </template>
 
@@ -23,11 +21,21 @@ export default {
 
 <style scoped>
 .light {
-  font-size: 15vh;
-  margin-bottom: 10vh;
+  font-size: 128px;
+  margin-bottom: 30px;
   color: #fefefe;
   text-shadow: 0 0 0.5em #0ae642, 0 0 0.2em #5c5c5c;
   font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  height: 600px;
+  position: relative;
 }
 
 .homeButton {

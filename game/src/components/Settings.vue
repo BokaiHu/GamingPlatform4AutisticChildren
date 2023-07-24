@@ -56,9 +56,14 @@ export default {
   padding: 10px 20px;
   background-color: #3498db;
   color: #fff;
-  border: none;
+  border: 2px solid rgba(255, 255, 255, 0);;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0d69a6;
+  border: 2px solid white;
 }
 
 .container {

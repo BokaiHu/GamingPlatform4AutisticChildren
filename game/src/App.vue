@@ -1,21 +1,18 @@
 <template>
   <div id="app">
-    <div class="container">
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <style>
 .home-page {
   background-color: #000000;
-}
-
-.container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  position: absolute;
 }
 </style>
