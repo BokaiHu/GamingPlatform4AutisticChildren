@@ -3,7 +3,8 @@
     <button class="back-button" @click="goBack">
       <span v-html="'&#8592;'"></span>
     </button>
-    <div class="imgbox">
+    <div class="main-container">
+      <div class="imgbox">
       <div class="background">
         <div
           class="image_berlin"
@@ -15,8 +16,8 @@
           @pointerup="mouseup(index, $event)">
         </div>
       </div>
-    </div>
-    <div class="operate">
+      </div>
+      <div class="operate">
       <div>{{ setTime(timer.m) }}:{{ setTime(timer.s) }}:{{ setTime(timer.ms) }}</div>
       <div>
         <button class="btn" @click="breakUp()" :disabled="isStarted">{{ $t('shuffle') }}</button>
@@ -32,13 +33,19 @@
           :style="{ display: display.value, width: '200px', height: '200px' }"
         />
       </div>
+      </div>
     </div>
-    <div class="popup-window" v-if="isPuzzleComplete">
-      <!-- 窗口内容 -->
-      <h3>Puzzle Complete!</h3>
-      <p>Congratulations on completing the puzzle.</p>
-      <!-- 可以在窗口中添加任何你需要的内容 -->
-    </div>
+    <transition>
+      <div class="popup-window" v-if="isPuzzleComplete & !HideNotShow">
+        <h3>Puzzle Complete!</h3>
+        <button class="btn" @click="HideNotShow = true">{{ $t("ToBerlin") }}</button>
+      </div>
+    </transition>
+    <transition>
+      <div class="popup-window" v-if="isPuzzleComplete & HideNotShow">
+        <Complete msg="paris" @close="isPuzzleComplete=false, HideNotShow=false" @navigate="navigateTo('EU')"></Complete>
+      </div>
+    </transition>
     <audio :src="bgmSrc" autoplay controls @ended="audioFinished"></audio>
   </div>
 </template>
@@ -80,15 +87,15 @@ const imgList = reactive({
 })
 // Compute the postion of each piece of the puzzle
 function posi(index){
-  let left = -(index%3) * 120;
-  let top = -(Math.ceil((index+1)/3) - 1) * 120;
+  let left = -(index%3) * 160;
+  let top = -(Math.ceil((index+1)/3) - 1) * 160;
   return `${left}px ${top}px`;
 }
 function left(item){
-  return item%3*120
+  return item%3*160
 }
 function top(item) {
-  return (Math.ceil((item+1)/3) - 1) * 120;
+  return (Math.ceil((item+1)/3) - 1) * 160;
 }
 // Break up the puzzle pieces
 function breakUp(){
@@ -207,10 +214,9 @@ startGame(); // 重新打乱拼图并开始游戏
 }
 </script>
 
-<style>
+<style scoped>
 .content{
   content: '';
-  width: 100%;
   height: 100%;
   top: 0;
   left: 0;
@@ -218,26 +224,31 @@ startGame(); // 重新打乱拼图并开始游戏
   background-color: rgb(140, 140, 245);
   background-size: cover;
   position: absolute;
+  min-width: 1500px;
+  display: flex
+}
+.main-container {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .imgbox{
-  width: 60%;
-  height: 100%;
-  color: azure;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 500px;
+    height: 500px;
+    margin-right: 50px;
+    margin-left: 150px;
 }
 .operate{
-  width: 40%;
-  font-size: 40px;
-  text-align: center;
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+    width: 700px;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 .btn{
   font-size: 20px;
@@ -245,19 +256,23 @@ startGame(); // 重新打乱拼图并开始游戏
   border-radius: 10px;
   background-color: pink;
   color: #fff;
-  border: none;
+  border: 2px solid rgba(255, 255, 255, 0);
+}
+.btn:hover {
+  background-color: rgb(253, 174, 187);
+  border: 2px solid white;
 }
 .background{
-  width: 360px;
-  height: 360px;
-  background-color: aquamarine;
-  position: relative;
+    width: 480px;
+    height: 480px;
+    background-color: aquamarine;
+    position: relative;
 }
 .image_berlin{
-  width: 120px;
-  height: 120px;
+  width: 160px;
+  height: 160px;
   background-image: url("/src/assets/puzzles/brandenburg_gate.jpg");
-  background-size: 360px;
+  background-size: 480px;
   position: absolute;
   will-change: transform;
   /* transition: all linear .3s; */
@@ -266,5 +281,32 @@ startGame(); // 重新打乱拼图并开始游戏
   width: 200px;
   height: 200px;
   margin-top: 20px;
+}
+.popup-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  background-color: #c5a3e6;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: pink;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0);
+  border-radius: 4px;
+  cursor: move;
+  font-size: 24px;
+}
+.back-button:hover {
+  background-color: rgb(253, 174, 187);
+  border: 2px solid white;
 }
 </style>

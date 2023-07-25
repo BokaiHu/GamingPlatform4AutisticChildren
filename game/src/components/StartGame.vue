@@ -1,14 +1,14 @@
 <template>
   <div class="bgi"></div>
-  <button class="back-button" @click="navigateTo('home')"><span v-html="backArrow"></span></button>
+  <button class="sgback-button" @click="navigateTo('home')"><span v-html="backArrow"></span></button>
   <div class="highlight-overlay" :class="highlightedRegion"></div>
-  <div class="buttons">
-    <button class="button" data-region="asia" @mouseenter="setHighlightedRegion('asia')" @mouseleave="clearHighlightedRegion" @click="navigateTo('AS')">{{ $t('continent_asia') }}</button>
-    <button class="button" data-region="europe" @mouseenter="setHighlightedRegion('europe')" @mouseleave="clearHighlightedRegion" @click="navigateTo('EU')">{{ $t('continent_europe') }}</button>
-    <button class="button" data-region="africa" @mouseenter="setHighlightedRegion('africa')" @mouseleave="clearHighlightedRegion" @click="navigateTo('AF')">{{ $t('continent_africa') }}</button>
-    <button class="button" data-region="north-america" @mouseenter="setHighlightedRegion('north-america')" @mouseleave="clearHighlightedRegion" @click="navigateTo('NA')">{{ $t('continent_na') }}</button>
-    <button class="button" data-region="south-america" @mouseenter="setHighlightedRegion('south-america')" @mouseleave="clearHighlightedRegion" @click="navigateTo('SA')">{{ $t('continent_sa') }}</button>
-    <button class="button" data-region="oceania" @mouseenter="setHighlightedRegion('oceania')" @mouseleave="clearHighlightedRegion" @click="navigateTo('OC')">{{ $t('continent_oceania') }}</button>
+  <div class="sgbuttons">
+    <button class="sgbutton" data-region="asia" @mouseenter="setHighlightedRegion('asia')" @mouseleave="clearHighlightedRegion" @click="navigateTo('AS')">{{ $t('continent_asia') }}</button>
+    <button class="sgbutton" data-region="europe" @mouseenter="setHighlightedRegion('europe')" @mouseleave="clearHighlightedRegion" @click="navigateTo('EU')">{{ $t('continent_europe') }}</button>
+    <button class="sgbutton" data-region="africa" @mouseenter="setHighlightedRegion('africa')" @mouseleave="clearHighlightedRegion" @click="navigateTo('AF')">{{ $t('continent_africa') }}</button>
+    <button class="sgbutton" data-region="north-america" @mouseenter="setHighlightedRegion('north-america')" @mouseleave="clearHighlightedRegion" @click="navigateTo('NA')">{{ $t('continent_na') }}</button>
+    <button class="sgbutton" data-region="south-america" @mouseenter="setHighlightedRegion('south-america')" @mouseleave="clearHighlightedRegion" @click="navigateTo('SA')">{{ $t('continent_sa') }}</button>
+    <button class="sgbutton" data-region="oceania" @mouseenter="setHighlightedRegion('oceania')" @mouseleave="clearHighlightedRegion" @click="navigateTo('OC')">{{ $t('continent_oceania') }}</button>
   </div>
 </template>
 
@@ -38,11 +38,9 @@ export default {
 
 <style>
 .start-game-page {
-  width: 100%; /* 确保元素宽度为100% */
-  height: 100%; /* 确保元素高度为100% */
+  min-width: 1500px;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
   background-color: #026e7a;
 }
@@ -51,18 +49,17 @@ export default {
   background-image: url("/src/assets/cWorldMap2.jpg");
   width: 1241px; /* 确保元素宽度为100% */
   height: 623px; /* 确保元素高度为100% */
+  margin-bottom: 50px;
 }
 
-.buttons {
+.sgbuttons {
   position: absolute;
-  flex-direction: column;
   width: 700px;
-  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.button {
+.sgbutton {
   padding: 10px 20px;
   margin: 0 5px;
   background-color: #ffb300;
@@ -72,12 +69,12 @@ export default {
   cursor: pointer;
 }
 
-.button:hover {
+.sgbutton:hover {
   background-color: #ba8200;
   border: 2px solid white;
 }
 
-.back-button {
+.sgback-button {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -91,7 +88,7 @@ export default {
   font-size: 24px;
 }
 
-.back-button:hover {
+.sgback-button:hover {
   background-color: #ba8200;
   border: 2px solid white;
 }
@@ -108,43 +105,41 @@ export default {
 .highlight-overlay.asia::before {
   background-image: url("/src/assets/global_masks/asia_nobg1.png");
   background-size: cover;
-  top: 12px;
-  left: 583px;
-  width: 923px;
-  height: 422px;
-  position: absolute;
-  opacity: 0.7; /* 鼠标悬停时显示叠加层 */
+  top: -97.5px;
+  left: 374.5px;
+  width: 1350px;
+  height: 629px;
+  opacity: 1; /* 鼠标悬停时显示叠加层 */
 }
 
 .highlight-overlay.europe::before {
   background-image: url("/src/assets/global_masks/europe_nobg.png");
   background-size: cover;
-  top: -10.5%;
-  left: 14.8%;
-  width: 72.5%;
-  height: 72.5%;
-  position: absolute;
+  top: -63px;
+  left: 317px;
+  width: 940px;
+  height: 460px;
   opacity: 1.5; /* 鼠标悬停时显示叠加层 */
 }
 
 .highlight-overlay.africa::before {
   background-image: url("/src/assets/global_masks/africa_nobg.png");
   background-size: cover;
-  top: 23%;
-  left: 12.4%;
-  width: 72.5%;
-  height: 72.5%;
+  top: 154px;
+  left: 292px;
+  width: 935px;
+  height: 455px;
   position: absolute;
-  opacity: 0.8; /* 鼠标悬停时显示叠加层 */
+  opacity: 1; /* 鼠标悬停时显示叠加层 */
 }
 
 .highlight-overlay.north-america::before {
   background-image: url("/src/assets/global_masks/north-america_nobg.png");
   background-size: cover;
-  top: -60px;
-  left: -191px;
-  width: 73%;
-  height: 73%;
+  top: -40px;
+  left: -20px;
+  width: 935px;
+  height: 455px;
   position: absolute;
   opacity: 0.8; /* 鼠标悬停时显示叠加层 */
 }
@@ -152,21 +147,21 @@ export default {
 .highlight-overlay.south-america::before {
   background-image: url("/src/assets/global_masks/south-america_nobg.png");
   background-size: cover;
-  top: 255px;
-  left: -98px;
-  width: 72.5%;
-  height: 72.5%;
+  top: 225px;
+  left: 56px;
+  width: 935px;
+  height: 455px;
   position: absolute;
-  opacity: 1.0; /* 鼠标悬停时显示叠加层 */
+  opacity: 1.5; /* 鼠标悬停时显示叠加层 */
 }
 
 .highlight-overlay.oceania::before {
   background-image: url("/src/assets/global_masks/oceania_nobg.png");
   background-size: cover;
-  top: 257px;
-  left: 633px;
-  width: 73%;
-  height: 73%;
+  top: 225px;
+  left: 673px;
+  width: 935px;
+  height: 455px;
   position: absolute;
   opacity: 0.9; /* 鼠标悬停时显示叠加层 */
 }

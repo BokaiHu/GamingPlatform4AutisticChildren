@@ -82,7 +82,7 @@ const navigation = () => {
   align-items: center;
   justify-content: center;
   flex-direction: column; /* 设置按钮垂直排列 */
-  background-color: #8a2be2; /* 修改背景色为紫色 */
+  background-color: #c5a3e6; /* 修改背景色为紫色 */
   position: relative; /* 添加position属性 */
   z-index: 999; /* 设置较高的z-index值 */
   position: absolute;
