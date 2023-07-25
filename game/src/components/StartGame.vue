@@ -1,7 +1,8 @@
 <template>
-  <div class="bgi"></div>
   <button class="sgback-button" @click="navigateTo('home')"><span v-html="backArrow"></span></button>
-  <div class="highlight-overlay" :class="highlightedRegion"></div>
+  <div class="bgi">
+    <div class="highlight-overlay" :class="highlightedRegion"></div>
+  </div>
   <div class="sgbuttons">
     <button class="sgbutton" data-region="asia" @mouseenter="setHighlightedRegion('asia')" @mouseleave="clearHighlightedRegion" @click="navigateTo('AS')">{{ $t('continent_asia') }}</button>
     <button class="sgbutton" data-region="europe" @mouseenter="setHighlightedRegion('europe')" @mouseleave="clearHighlightedRegion" @click="navigateTo('EU')">{{ $t('continent_europe') }}</button>
@@ -39,7 +40,6 @@ export default {
 <style>
 .start-game-page {
   min-width: 1500px;
-  position: relative;
   display: flex;
   justify-content: center;
   background-color: #026e7a;
@@ -47,8 +47,9 @@ export default {
 
 .bgi {
   background-image: url("/src/assets/cWorldMap2.jpg");
-  width: 1241px; /* 确保元素宽度为100% */
-  height: 623px; /* 确保元素高度为100% */
+  width: 1241px;
+  height: 623px;
+  position: relative;
   margin-bottom: 50px;
 }
 
@@ -105,8 +106,9 @@ export default {
 .highlight-overlay.asia::before {
   background-image: url("/src/assets/global_masks/asia_nobg1.png");
   background-size: cover;
-  top: -97.5px;
-  left: 374.5px;
+  position: absolute;
+  top: -99.5px;
+  left: 245px;
   width: 1350px;
   height: 629px;
   opacity: 1; /* 鼠标悬停时显示叠加层 */
@@ -115,8 +117,9 @@ export default {
 .highlight-overlay.europe::before {
   background-image: url("/src/assets/global_masks/europe_nobg.png");
   background-size: cover;
+  position: absolute;
   top: -63px;
-  left: 317px;
+  left: 187px;
   width: 940px;
   height: 460px;
   opacity: 1.5; /* 鼠标悬停时显示叠加层 */
@@ -126,7 +129,7 @@ export default {
   background-image: url("/src/assets/global_masks/africa_nobg.png");
   background-size: cover;
   top: 154px;
-  left: 292px;
+  left: 159.5px;
   width: 935px;
   height: 455px;
   position: absolute;
@@ -137,7 +140,7 @@ export default {
   background-image: url("/src/assets/global_masks/north-america_nobg.png");
   background-size: cover;
   top: -40px;
-  left: -20px;
+  left: -149px;
   width: 935px;
   height: 455px;
   position: absolute;
@@ -147,8 +150,8 @@ export default {
 .highlight-overlay.south-america::before {
   background-image: url("/src/assets/global_masks/south-america_nobg.png");
   background-size: cover;
-  top: 225px;
-  left: 56px;
+  top: 224px;
+  left: -69px;
   width: 935px;
   height: 455px;
   position: absolute;
@@ -159,7 +162,7 @@ export default {
   background-image: url("/src/assets/global_masks/oceania_nobg.png");
   background-size: cover;
   top: 225px;
-  left: 673px;
+  left: 541.5px;
   width: 935px;
   height: 455px;
   position: absolute;
