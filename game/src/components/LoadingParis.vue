@@ -38,10 +38,10 @@
         if (this.percentage2 != 100) 
         this.percentage2 = (this.percentage2 % 100) + 10
       }, 800)
-      // setTimeout(() => {
-      // this.$router.push({
-      //   name:"paris"
-      // })},8500)
+       setTimeout(() => {
+       this.$router.push({
+         name:"paris"
+       })},8500)
     },
   }
 </script>
@@ -72,7 +72,7 @@
 }
 
 .videoContainer{
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -85,7 +85,7 @@
 
 .fullscreenVideo{
   width: 100%;
-  height: 100%;
+  height: 120%;
   object-fit: fill;
 }
 
@@ -105,7 +105,7 @@
 }
 
 .img{
-  height: 60%;
+  height: 82%;
   right: -15%;
   position: absolute;
 }

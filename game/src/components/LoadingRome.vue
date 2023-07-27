@@ -1,19 +1,6 @@
 <template>
   <div>
-  <div class="demo-progress">
-    <el-progress class="progress"
-      type="line"
-      text-inside = true
-      striped= "true"
-      stroke-width = 70
-      :percentage="percentage2"
-      :color="colors">
-      <template #default="{ percentage }">
-        <span class="percentage-label">The train is moving...</span>
-        <span class="percentage-value">{{ percentage }}%</span>
-      </template>
-    </el-progress>
-  </div>
+  <img src="/src/assets/loading/colosseum.png" alt="" class="img" ref="imgDiv">
   <div class="videoContainer">
     <video class="fullscreenVideo" id="bgVid" playsinline="" autoplay="muted" muted="" loop="">
     <source src="/src/assets/train.mp4" type="video/mp4">
@@ -97,7 +84,7 @@
 
 .fullscreenVideo{
   width: 100%;
-  height: 100%;
+  height: 120%;
   object-fit: fill;
 }
 
@@ -114,5 +101,12 @@
   border-radius: 4px;
   cursor: move;
   font-size: 24px;
+}
+
+.img{
+  height: 60%;
+  right: -12.5%;
+  top: 23%;
+  position: absolute;
 }
 </style>

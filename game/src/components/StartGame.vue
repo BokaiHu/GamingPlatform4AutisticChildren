@@ -4,12 +4,16 @@
     <div class="highlight-overlay" :class="highlightedRegion"></div>
   </div>
   <div class="sgbuttons">
-    <button class="sgbutton" data-region="asia" @mouseenter="setHighlightedRegion('asia')" @mouseleave="clearHighlightedRegion" @click="navigateTo('AS')">{{ $t('continent_asia') }}</button>
     <button class="sgbutton" data-region="europe" @mouseenter="setHighlightedRegion('europe')" @mouseleave="clearHighlightedRegion" @click="navigateTo('EU')">{{ $t('continent_europe') }}</button>
+    <button class="sgbutton" data-region="oceania" @mouseenter="setHighlightedRegion('oceania')" @mouseleave="clearHighlightedRegion" @click="navigateTo('OC')">{{ $t('continent_oceania') }}</button>
+    <button class="lockbutton" data-region="asia" @mouseenter="setHighlightedRegion('asia')" @mouseleave="clearHighlightedRegion">{{ $t('continent_asia') }}</button>
+    <button class="lockbutton" data-region="africa" @mouseenter="setHighlightedRegion('africa')" @mouseleave="clearHighlightedRegion">{{ $t('continent_africa') }}</button>
+    <button class="lockbutton" data-region="north-america" @mouseenter="setHighlightedRegion('north-america')" @mouseleave="clearHighlightedRegion">{{ $t('continent_na') }}</button>
+    <button class="lockbutton" data-region="south-america" @mouseenter="setHighlightedRegion('south-america')" @mouseleave="clearHighlightedRegion">{{ $t('continent_sa') }}</button>
+    <!-- <button class="sgbutton" data-region="asia" @mouseenter="setHighlightedRegion('asia')" @mouseleave="clearHighlightedRegion" @click="navigateTo('AS')">{{ $t('continent_asia') }}</button>
     <button class="sgbutton" data-region="africa" @mouseenter="setHighlightedRegion('africa')" @mouseleave="clearHighlightedRegion" @click="navigateTo('AF')">{{ $t('continent_africa') }}</button>
     <button class="sgbutton" data-region="north-america" @mouseenter="setHighlightedRegion('north-america')" @mouseleave="clearHighlightedRegion" @click="navigateTo('NA')">{{ $t('continent_na') }}</button>
-    <button class="sgbutton" data-region="south-america" @mouseenter="setHighlightedRegion('south-america')" @mouseleave="clearHighlightedRegion" @click="navigateTo('SA')">{{ $t('continent_sa') }}</button>
-    <button class="sgbutton" data-region="oceania" @mouseenter="setHighlightedRegion('oceania')" @mouseleave="clearHighlightedRegion" @click="navigateTo('OC')">{{ $t('continent_oceania') }}</button>
+    <button class="sgbutton" data-region="south-america" @mouseenter="setHighlightedRegion('south-america')" @mouseleave="clearHighlightedRegion" @click="navigateTo('SA')">{{ $t('continent_sa') }}</button> -->
   </div>
 </template>
 
@@ -91,6 +95,21 @@ export default {
 
 .sgback-button:hover {
   background-color: #ba8200;
+  border: 2px solid white;
+}
+
+.lockbutton {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #808080;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.lockbutton:hover {
+  background-color: #a4a4a4;
   border: 2px solid white;
 }
 

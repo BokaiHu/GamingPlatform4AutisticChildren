@@ -31,6 +31,7 @@ import LoadingBerlin from './components/LoadingBerlin.vue';
 import LoadingCologne from './components/LoadingCologne.vue';
 import LoadingLondon from './components/LoadingLondon.vue';
 import LoadingRome from './components/LoadingRome.vue';
+import LoadingSydney from './components/LoadingSydney.vue';
 import zh from './lang/zh.js';
 import en from './lang/en.js';
 
@@ -61,6 +62,7 @@ const router = createRouter({
     { path: '/loadingcologne', name: 'loadingcologne', component: LoadingCologne },
     { path: '/loadinglondon', name: 'loadinglondon', component: LoadingLondon },
     { path: '/loadingrome', name: 'loadingrome', component: LoadingRome },
+    { path: '/loadingsydney', name: 'loadingsydney', component: LoadingSydney },
   ]
 });
 
