@@ -8,7 +8,7 @@
       </div>
       <transition>
         <div v-if="showParis" class="pop-window">
-          <pop-paris msg="paris" @close="showParis=false" @navigate="navigateTo('paris')"></pop-paris>
+          <pop-paris msg="paris" @close="showParis=false" @navigate="navigateTo('loadingparis')"></pop-paris>
         </div>
         <div v-else-if="showBerlin" class="pop-window">
           <pop-paris msg="berlin" @close="showBerlin=false" @navigate="navigateTo('berlin')"></pop-paris>
