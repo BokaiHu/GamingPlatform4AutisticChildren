@@ -14,12 +14,13 @@ import Europe from './components/stages/Europe.vue';
 /* import Africa from './components/Africa.vue'; */
 /* import NorthAmerica from './components/NorthAmerica.vue'; */
 /* import SouthAmerica from './components/SouthAmerica.vue'; */
-/* import Oceania from './components/Oceania.vue'; */
+import Oceania from './components/stages/Oceania.vue';
 import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 import Paris from './components/eu_stages/Paris.vue';
 import Berlin from './components/eu_stages/Berlin.vue';
 import Cologne from './components/eu_stages/Cologne.vue';
+import Sydney from './components/oc_stages/Sydney.vue';
 import Rome from './components/eu_stages/Rome.vue';
 import London from './components/eu_stages/London.vue';
 import Settings from './components/Settings.vue';
@@ -53,7 +54,8 @@ const router = createRouter({
     /* { path: '/start/africa', name: 'africa', component: Africa }, */
     /* { path: '/start/north-america', name: 'north-america', component: NorthAmerica }, */
     /* { path: '/start/south-america', name: 'south-america', component: SouthAmerica }, */
-    /* { path: '/start/oceania', name: 'oceania', component: Oceania }, */
+    { path: '/start/oceania', name: 'OC', component: Oceania },
+    { path: '/start/oceania/sydney', name: 'sydney', component: Sydney },
     { path: '/loadingparis', name: 'loadingparis', component: LoadingParis },
     { path: '/loadingberlin', name: 'loadingberlin', component: LoadingBerlin },
     { path: '/loadingcologne', name: 'loadingcologne', component: LoadingCologne },
@@ -77,7 +79,7 @@ router.beforeEach((to, from, next) => {
   } 
   else if (to.name === 'start') {
     document.body.classList.add('start-game-page');
-    document.body.classList.remove('home-page', 'europe-page');
+    document.body.classList.remove('home-page', 'europe-page', 'oceania-page');
   } 
   else if (to.name === 'settings') {
     document.body.classList.add('home-page');
@@ -93,6 +95,10 @@ router.beforeEach((to, from, next) => {
   } 
   else if (to.name === 'EU') {
     document.body.classList.add('europe-page');
+    document.body.classList.remove('start-game-page');
+  } 
+  else if (to.name === 'OC') {
+    document.body.classList.add('oceania-page');
     document.body.classList.remove('start-game-page');
   } 
   else {

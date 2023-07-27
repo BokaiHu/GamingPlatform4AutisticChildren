@@ -8,6 +8,7 @@
         <img v-else-if="msg === 'rome'" src="~@/assets/puzzles/colossal.jpg" />
         <img v-else-if="msg === 'london'" src="~@/assets/puzzles/big_ben.jpg" />
         <img v-else-if="msg === 'cologne'" src="~@/assets/puzzles/cologne_cathedral.jpg" />
+        <img v-else-if="msg === 'sydney'" src="~@/assets/puzzles/MilfordSound.jpg" />
       </div>
       <!-- 右侧文字介绍 -->
       <div class="text-container">
@@ -44,6 +45,12 @@
           <br>
           <audio :src="iCologne" controls="true" autoplay="true"></audio>
         </p>
+        <p v-else-if="msg === 'sydney'">
+          {{ $t('MilfordSound') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=_eMAXOp2PvA" target="_blank">{{ $t('MilfordSoundLink') }}</a>
+          <br>
+        </p>
       </div>
       
     </div>
@@ -55,6 +62,7 @@
           <img v-else-if="msg === 'rome'" src="~@/assets/puzzles/colossal.jpg" />
           <img v-else-if="msg === 'london'" src="~@/assets/puzzles/big_ben.jpg" />
           <img v-else-if="msg === 'cologne'" src="~@/assets/puzzles/cologne_cathedral.jpg" />
+          <img v-else-if="msg === 'sydney'" src="~@/assets/puzzles/GreatOceanRoad.jfif" />
       </div>
       <!-- 右侧文字介绍 -->
       <div class="text-container">
@@ -91,6 +99,12 @@
           <br>
           <audio :src="iCologne" controls="true" autoplay="true"></audio>
         </p>
+        <p v-else-if="msg === 'sydney'">
+          {{ $t('GreatOceanRoad') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=K3QdYOl1AJU" target="_blank">{{ $t('GreatOceanRoadLink') }}</a>
+          <br>
+        </p>
       </div>
       
     </div>
@@ -109,6 +123,7 @@ import iBerlin from '@/assets/intro_audios/BrandenburgGate.mp3';
 import iRome from '@/assets/intro_audios/Colosseum.mp3';
 import iLondon from '@/assets/intro_audios/BigBen.mp3';
 import iCologne from '@/assets/intro_audios/CologneCathedral.mp3';
+import iSydney from '@/assets/intro_audios/CologneCathedral.mp3';
 const props = defineProps({
     msg:String,
 })

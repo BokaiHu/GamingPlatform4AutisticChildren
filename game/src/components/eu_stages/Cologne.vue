@@ -233,6 +233,16 @@ startGame(); // 重新打乱拼图并开始游戏
   align-items: center;
   justify-content: center;
 }
+.popup-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  background-color: #c5a3e6;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 .imgbox{
     width: 500px;
     height: 500px;
