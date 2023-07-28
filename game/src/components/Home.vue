@@ -36,6 +36,7 @@ export default {
   width: 350px;
   height: 600px;
   position: relative;
+  top: 100px
 }
 
 .homeButton {

@@ -108,10 +108,6 @@ export default {
   cursor: pointer;
 }
 
-.lockbutton:hover {
-  background-color: #a4a4a4;
-  border: 2px solid white;
-}
 
 .highlight-overlay::before {
   content: '';

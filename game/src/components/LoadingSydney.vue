@@ -16,6 +16,8 @@
       name: 'LoadingSydney',
       data() {
         return {
+          video: null,
+          clearTime: null,
           percentage2: 0,
           colors: [
             { color: '#f56c6c', percentage: 20 },
@@ -30,19 +32,40 @@
       methods: {
         goBack() {
           this.$router.go(-1);
+        },
+        closeVideoPlayer () {
+          this.video.dispose()
+        // 在这里添加关闭视频播放器的代码
+          this.video = null
         }
       },
   
       mounted() {
+        this.video = document.getElementById('bgVid')
+        this.video.addEventListener('ended', this.closeVideoPlayer)
+
         setInterval(() => {
           if (this.percentage2 != 100) 
           this.percentage2 = (this.percentage2 % 100) + 10
         }, 800),
-        setTimeout(() => {
+        this.clearTime = setTimeout(() => {
         this.$router.push({
           name:"sydney"
         })},8500)
       },
+
+      beforeDestroy(){
+        if (this.video != null) { 
+          this.video.pause() //关闭
+          this.video.dispose();//销毁
+          this.video = null
+        }
+      },
+
+      destroyed(){
+          clearTimeout(this.clearTime);
+          this.clearTime = null // 清除
+        }
     }
   </script>
   

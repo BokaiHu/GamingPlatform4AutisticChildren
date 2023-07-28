@@ -7,18 +7,16 @@
 <style>
 .home-page {
   background-color: #000000;
-  width: 100%;
-  height: 100%;
+  min-width: 1500px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  position: absolute;
 }
 ::-webkit-scrollbar {
   width: 0 !important;
+  display: none;
 }
 ::-webkit-scrollbar {
   width: 0 !important;height: 0;
+  display: none;
 }
 </style>
