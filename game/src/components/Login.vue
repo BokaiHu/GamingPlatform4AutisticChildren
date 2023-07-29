@@ -18,7 +18,7 @@
           <button @click="login()">{{ $t('log_in') }}</button>
           <button type="button" style="margin-left: 50%;" @click="navigateTo('register')">{{ $t('register') }}</button>
       </div>
-      <button @click="navigateTo('start')">我是程序员，直接跳过</button>
+      <button @click="navigateTo('start')">{{  $t('skipfornow') }}</button>
     </div>
   </div>
 </template>

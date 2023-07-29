@@ -13,7 +13,11 @@
           :data-index="index"
           @pointerdown="mousedown(index)"
           @pointermove="mousemove(index, $event)"
-          @pointerup="mouseup(index, $event)">
+          @pointerup="mouseup(index, $event)"
+          @touchstart="mousedown(index, $event)"
+          @touchmove="mousemove(index, $event)"
+          @touchend="mouseup(index, $event)"
+          >
         </div>
       </div>
       </div>
@@ -36,14 +40,35 @@
       </div>
     </div>
     <transition>
-      <div class="popup-window" v-if="isPuzzleComplete & !HideNotShow">
-        <h3>Puzzle Complete!</h3>
-        <button class="btn" @click="HideNotShow = true">{{ $t("ToRome") }}</button>
+      <div class="popup-window" v-if="isPuzzleComplete & !(showCar | showCuisine | showFlower | showCurrency)">
+        <h3>{{ $t("Complete") }}</h3>
+        <br>
+        <h3>{{ $t("CompleteGuide") }}</h3>
+        <button class="btn" @click="showCar = true">{{ $t("Car") }}</button>
+        <button class="btn" @click="showCuisine = true">{{ $t("Cuisine") }}</button>
+        <button class="btn" @click="showFlower = true">{{ $t("Flower") }}</button>
+        <button class="btn" @click="showCurrency = true">{{ $t("Currency") }}</button>
+        <button class="btn" @click="isPuzzleComplete = false">{{ $t("close") }}</button>
       </div>
     </transition>
     <transition>
-      <div class="popup-window" v-if="isPuzzleComplete & HideNotShow">
-        <Complete msg="paris" @close="isPuzzleComplete=false, HideNotShow=false" @navigate="navigateTo('EU')"></Complete>
+      <div class="popup-window" v-if="isPuzzleComplete & showCar">
+        <Complete msg="italyCar" @close="showCar=false" @navigate="navigateTo('EU')"></Complete>
+      </div>
+    </transition>
+    <transition>
+      <div class="popup-window" v-if="isPuzzleComplete & showCuisine">
+        <Complete msg="italyCuisine" @close="showCuisine=false" @navigate="navigateTo('EU')"></Complete>
+      </div>
+    </transition>
+    <transition>
+      <div class="popup-window" v-if="isPuzzleComplete & showFlower">
+        <Complete msg="italyFlower" @close="showFlower=false" @navigate="navigateTo('EU')"></Complete>
+      </div>
+    </transition>
+    <transition>
+      <div class="popup-window" v-if="isPuzzleComplete & showCurrency">
+        <Complete msg="italyCurrency" @close="showCurrency=false" @navigate="navigateTo('EU')"></Complete>
       </div>
     </transition>
     <audio :src="bgmSrc" autoplay controls @ended="audioFinished"></audio>
@@ -56,9 +81,14 @@ import { useRouter } from 'vue-router';
 import LaCam from '@/assets/bgms/LaCam.mp3';
 import pgnn from '@/assets/bgms/pgnn.mp3';
 import Paganini from '@/assets/bgms/Paganini.mp3';
+import Complete from '../popup_windows/complete_pop.vue';
 const router = useRouter();
 const isPuzzleComplete = ref(false);
 const canMovePuzzle = ref(false);
+const showCar = ref(false);
+const showCuisine = ref(false);
+const showFlower = ref(false);
+const showCurrency = ref(false);
 
 // BGM control
 const bgmId = ref(0);

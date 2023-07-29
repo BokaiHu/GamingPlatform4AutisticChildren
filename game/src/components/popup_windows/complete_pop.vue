@@ -3,101 +3,63 @@
     <div class="i-t">
       <!-- 左侧图片 -->
       <div class="image-container">
-        <img v-if="msg === 'paris'" src="~@/assets/intros/baguette.png" />
-        <img v-else-if="msg === 'berlin'" src="~@/assets/puzzles/brandenburg_gate.jpg" />
-        <img v-else-if="msg === 'rome'" src="~@/assets/puzzles/colossal.jpg" />
-        <img v-else-if="msg === 'london'" src="~@/assets/puzzles/big_ben.jpg" />
-        <img v-else-if="msg === 'cologne'" src="~@/assets/puzzles/cologne_cathedral.jpg" />
-        <img v-else-if="msg === 'sydney'" src="~@/assets/puzzles/MilfordSound.jpg" />
-      </div>
-      <!-- 右侧文字介绍 -->
-      <div class="text-container">
-        <p v-if="msg === 'paris'">
-          {{ $t('FrenchCuisine') }}
-          <br>
-          <a href="https://www.youtube.com/watch?v=qgewyDj3ZnA" target="_blank">{{ $t('FrenchCuisineLink') }}</a>
-        </p>
-        <p v-else-if="msg === 'berlin'">
-          {{ $t('BrandenBurg') }}
-          <br>
-          <a href="https://www.youtube.com/watch?v=vvIacr85Sjo" target="_blank">{{ $t('berlinIntro') }}</a>
-          <br>
-          <audio :src="iBerlin" controls="true" autoplay="true"></audio>
-        </p>
-        <p v-else-if="msg === 'rome'">
-          {{ $t('Colossal') }}
-          <br>
-          <a href="https://www.youtube.com/watch?v=U6oPfmJcU8s" target="_blank">{{ $t('romeIntro') }}</a>
-          <br>
-          <audio :src="iRome" controls="true" autoplay="true"></audio>
-        </p>
-        <p v-else-if="msg === 'london'">
-          {{ $t('BigBen') }}
-          <br>
-          <a href="https://www.youtube.com/watch?v=tpYwWK7Xgvc" target="_blank">{{ $t('londonIntro') }}</a>
-          <br>
-          <audio :src="iLondon" controls="true" autoplay="true"></audio>
-        </p>
-        <p v-else-if="msg === 'cologne'">
-          {{ $t('CologneCathedral') }}
-          <br>
-          <a href="https://www.youtube.com/watch?v=rzQZuQBm074" target="_blank">{{ $t('cologneIntro') }}</a>
-          <br>
-          <audio :src="iCologne" controls="true" autoplay="true"></audio>
-        </p>
-        <p v-else-if="msg === 'sydney'">
-          {{ $t('MilfordSound') }}
-          <br>
-          <a href="https://www.youtube.com/watch?v=_eMAXOp2PvA" target="_blank">{{ $t('MilfordSoundLink') }}</a>
-          <br>
-        </p>
-      </div>
-      
-    </div>
-    <div class="i-t">
-      <!-- 左侧图片 -->
-      <div class="image-container">
-          <img v-if="msg === 'paris'" src="~@/assets/intros/bugatti.jpg" />
-          <img v-else-if="msg === 'berlin'" src="~@/assets/puzzles/brandenburg_gate.jpg" />
-          <img v-else-if="msg === 'rome'" src="~@/assets/puzzles/colossal.jpg" />
-          <img v-else-if="msg === 'london'" src="~@/assets/puzzles/big_ben.jpg" />
-          <img v-else-if="msg === 'cologne'" src="~@/assets/puzzles/cologne_cathedral.jpg" />
+          <img v-if="msg === 'frenchCar'" src="~@/assets/intros/bugatti.jpg" />
+          <img v-else-if="msg === 'germanCar0'" src="~@/assets/intros/porsche.jpg" />
+          <img v-else-if="msg === 'italyCar'" src="~@/assets/intros/ferrari.jpg" />
+          <img v-else-if="msg === 'britishCar'" src="~@/assets/intros/jaguar.jpg" />
+          <img v-else-if="msg === 'germanCar1'" src="~@/assets/intros/benz.jpg" />
           <img v-else-if="msg === 'sydney'" src="~@/assets/puzzles/GreatOceanRoad.jfif" />
+
+          <img v-else-if="msg === 'frenchCuisine'" src="~@/assets/intros/baguette.png" />
+          <img v-else-if="msg === 'germanCuisine0'" src="~@/assets/intros/sausage.jpg" />
+          <img v-else-if="msg === 'italyCuisine'" src="~@/assets/intros/pizza.jpg" />
+          <img v-else-if="msg === 'britishCuisine'" src="~@/assets/intros/fishandchips.jpg" />
+          <img v-else-if="msg === 'germanCuisine1'" src="~@/assets/intros/schnitzel.jpg" />
+          <img v-else-if="msg === 'sydney'" src="~@/assets/puzzles/MilfordSound.jpg" />
+
+          <img v-else-if="msg === 'frenchCurrency'" src="~@/assets/intros/frank.jpg" />
+          <img v-else-if="msg === 'germanCurrency0'" src="~@/assets/intros/mark.jpg" />
+          <img v-else-if="msg === 'italyCurrency'" src="~@/assets/intros/lira.jpg" />
+          <img v-else-if="msg === 'britishCurrency'" src="~@/assets/intros/pound.jpg" />
+          <img v-else-if="msg === 'germanCurrency1'" src="~@/assets/intros/euro.jpg" />
+          <img v-else-if="msg === 'sydney'" src="~@/assets/puzzles/MilfordSound.jpg" />
+
+          <img v-else-if="msg === 'frenchFlower'" src="~@/assets/intros/iris.jpg" />
+          <img v-else-if="msg === 'germanFlower'" src="~@/assets/intros/cornflower.jpg" />
+          <img v-else-if="msg === 'italyFlower'" src="~@/assets/intros/lily.jpg" />
+          <img v-else-if="msg === 'britishFlower'" src="~@/assets/intros/tudorrose.jpg" />
+          <img v-else-if="msg === 'sydney'" src="~@/assets/puzzles/MilfordSound.jpg" />
       </div>
       <!-- 右侧文字介绍 -->
       <div class="text-container">
-        <p v-if="msg === 'paris'">
+        <p v-if="msg === 'frenchCar'">
           {{ $t('FrenchCars') }}
           <br>
           <a href="https://www.youtube.com/watch?v=qgewyDj3ZnA" target="_blank">{{ $t('FrenchCarsLink') }}</a>
         </p>
-        <p v-else-if="msg === 'berlin'">
-          {{ $t('BrandenBurg') }}
+        <p v-else-if="msg === 'germanCar0'">
+          {{ $t('GermanCars0') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=vvIacr85Sjo" target="_blank">{{ $t('berlinIntro') }}</a>
+          <a href="https://www.youtube.com/watch?v=vvIacr85Sjo" target="_blank">{{ $t('GermanCarsLink0') }}</a>
           <br>
-          <audio :src="iBerlin" controls="true" autoplay="true"></audio>
         </p>
-        <p v-else-if="msg === 'rome'">
-          {{ $t('Colossal') }}
+        <p v-else-if="msg === 'italyCar'">
+          {{ $t('ItalyCars') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=U6oPfmJcU8s" target="_blank">{{ $t('romeIntro') }}</a>
+          <a href="https://www.youtube.com/watch?v=U6oPfmJcU8s" target="_blank">{{ $t('ItalyCarsLink') }}</a>
           <br>
-          <audio :src="iRome" controls="true" autoplay="true"></audio>
         </p>
-        <p v-else-if="msg === 'london'">
-          {{ $t('BigBen') }}
+        <p v-else-if="msg === 'britishCar'">
+          {{ $t('BritishCars') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=tpYwWK7Xgvc" target="_blank">{{ $t('londonIntro') }}</a>
+          <a href="https://www.youtube.com/watch?v=tpYwWK7Xgvc" target="_blank">{{ $t('BritishCarsLink') }}</a>
           <br>
-          <audio :src="iLondon" controls="true" autoplay="true"></audio>
         </p>
-        <p v-else-if="msg === 'cologne'">
-          {{ $t('CologneCathedral') }}
+        <p v-else-if="msg === 'germanCar1'">
+          {{ $t('GermanCars1') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=rzQZuQBm074" target="_blank">{{ $t('cologneIntro') }}</a>
+          <a href="https://www.youtube.com/watch?v=rzQZuQBm074" target="_blank">{{ $t('GermanCarsLink1') }}</a>
           <br>
-          <audio :src="iCologne" controls="true" autoplay="true"></audio>
         </p>
         <p v-else-if="msg === 'sydney'">
           {{ $t('GreatOceanRoad') }}
@@ -105,12 +67,114 @@
           <a href="https://www.youtube.com/watch?v=K3QdYOl1AJU" target="_blank">{{ $t('GreatOceanRoadLink') }}</a>
           <br>
         </p>
+
+        <p v-else-if="msg === 'frenchCuisine'">
+          {{ $t('FrenchCuisine') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=AoHYO1yfe9w" target="_blank">{{ $t('FrenchCuisineLink') }}</a>
+        </p>
+        <p v-else-if="msg === 'germanCuisine0'">
+          {{ $t('GermanCuisine0') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=0Sr9pUYiF2k" target="_blank">{{ $t('GermanCuisineLink') }}</a>
+          <br>
+        </p>
+        <p v-else-if="msg === 'italyCuisine'">
+          {{ $t('ItalyCuisine') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=7toSikYGFNM" target="_blank">{{ $t('ItalyCuisineLink0') }}</a>
+          <br>
+        </p>
+        <p v-else-if="msg === 'britishCuisine'">
+          {{ $t('BritishCuisine') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=8F0FSm5lVvs" target="_blank">{{ $t('BritishCuisineLink') }}</a>
+          <br>
+        </p>
+        <p v-else-if="msg === 'germanCuisine1'">
+          {{ $t('GermanCuisine1') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=KzGxq_KDwt8&t=162s" target="_blank">{{ $t('GermanCuisineLink1') }}</a>
+          <br>
+        </p>
+        <p v-else-if="msg === 'austriliaCuisine'">
+          {{ $t('AustriliaCuisine') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=_eMAXOp2PvA" target="_blank">{{ $t('AustriliaCuisineLink') }}</a>
+          <br>
+        </p>
+
+        <p v-else-if="msg === 'frenchCurrency'">
+          {{ $t('FrenchCurrency') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=jKkrHMHkA8Y" target="_blank">{{ $t('FrenchCurrencyLink') }}</a>
+        </p>
+        <p v-else-if="msg === 'germanCurrency0'">
+          {{ $t('GermanCurrency0') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=HOsVZDmK5tc" target="_blank">{{ $t('GermanCurrencyLink0') }}</a>
+          <br>
+        </p>
+        <p v-else-if="msg === 'italyCurrency'">
+          {{ $t('ItalyCurrency') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=dYh32xfsL8E" target="_blank">{{ $t('ItalyCurrencyLink') }}</a>
+          <br>
+        </p>
+        <p v-else-if="msg === 'britishCurrency'">
+          {{ $t('BritishCurrency') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=dFzAU3u06Ps" target="_blank">{{ $t('BritishCurrencyLink') }}</a>
+          <br>
+        </p>
+        <p v-else-if="msg === 'germanCurrency1'">
+          {{ $t('GermanCurrency1') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=3hrx8WK2TH0" target="_blank">{{ $t('GermanCurrencyLink1') }}</a>
+          <br>
+        </p>
+        <p v-else-if="msg === 'austriliaCuisine'">
+          {{ $t('AustriliaCuisine') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=_eMAXOp2PvA" target="_blank">{{ $t('AustriliaCuisineLink') }}</a>
+          <br>
+        </p>
+
+        <p v-else-if="msg === 'frenchFlower'">
+          {{ $t('FrenchFlower') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=AoHYO1yfe9w" target="_blank">{{ $t('FrenchFlowerLink') }}</a>
+        </p>
+        <p v-else-if="msg === 'germanFlower'">
+          {{ $t('GermanFlower') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=0Sr9pUYiF2k" target="_blank">{{ $t('GermanFlowerLink') }}</a>
+          <br>
+        </p>
+        <p v-else-if="msg === 'italyFlower'">
+          {{ $t('ItalyFlower') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=7toSikYGFNM" target="_blank">{{ $t('ItalyFlowerLink0') }}</a>
+          <br>
+        </p>
+        <p v-else-if="msg === 'britishFlower'">
+          {{ $t('BritishFlower') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=8F0FSm5lVvs" target="_blank">{{ $t('BritishFlowerLink') }}</a>
+          <br>
+        </p>
+        <p v-else-if="msg === 'austriliaCuisine'">
+          {{ $t('AustriliaCuisine') }}
+          <br>
+          <a href="https://www.youtube.com/watch?v=_eMAXOp2PvA" target="_blank">{{ $t('AustriliaCuisineLink') }}</a>
+          <br>
+        </p>
       </div>
-      
     </div>
+
     <!-- 按钮 -->
     <div class="button-container">
-      <button @click="closePopup">{{ $t('close') }}</button>
+      <button @click="closePopup">{{ $t('goBack') }}</button>
       <button @click="navigation">{{ $t('ReturnToMainStages') }}</button>
     </div>
   </div>
@@ -156,6 +220,9 @@ const navigation = () => {
 .image-container {
   margin: 0;
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .image-container img {

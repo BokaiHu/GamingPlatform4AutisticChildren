@@ -13,7 +13,11 @@
           :data-index="index"
           @pointerdown="mousedown(index)"
           @pointermove="mousemove(index, $event)"
-          @pointerup="mouseup(index, $event)">
+          @pointerup="mouseup(index, $event)"
+          @touchstart="mousedown(index, $event)"
+          @touchmove="mousemove(index, $event)"
+          @touchend="mouseup(index, $event)"
+          >
         </div>
       </div>
       </div>
@@ -37,14 +41,35 @@
     </div>
     <!-- 在模板的顶部或适当的位置添加弹出窗口元素 -->
     <transition>
-      <div class="popup-window" v-if="isPuzzleComplete & !HideNotShow">
-        <h3>Puzzle Complete!</h3>
-        <button class="btn" @click="HideNotShow = true">{{ $t("ToFrance") }}</button>
+      <div class="popup-window" v-if="isPuzzleComplete & !(showCar | showCuisine | showFlower | showCurrency)">
+        <h3>{{ $t("Complete") }}</h3>
+        <br>
+        <h3>{{ $t("CompleteGuide") }}</h3>
+        <button class="btn" @click="showCar = true">{{ $t("Car") }}</button>
+        <button class="btn" @click="showCuisine = true">{{ $t("Cuisine") }}</button>
+        <button class="btn" @click="showFlower = true">{{ $t("Flower") }}</button>
+        <button class="btn" @click="showCurrency = true">{{ $t("Currency") }}</button>
+        <button class="btn" @click="isPuzzleComplete = false">{{ $t("close") }}</button>
       </div>
     </transition>
     <transition>
-      <div class="popup-window" v-if="isPuzzleComplete & HideNotShow">
-        <Complete msg="paris" @close="isPuzzleComplete=false, HideNotShow=false" @navigate="navigateTo('EU')"></Complete>
+      <div class="popup-window" v-if="isPuzzleComplete & showCar">
+        <Complete msg="frenchCar" @close="showCar=false" @navigate="navigateTo('EU')"></Complete>
+      </div>
+    </transition>
+    <transition>
+      <div class="popup-window" v-if="isPuzzleComplete & showCuisine">
+        <Complete msg="frenchCuisine" @close="showCuisine=false" @navigate="navigateTo('EU')"></Complete>
+      </div>
+    </transition>
+    <transition>
+      <div class="popup-window" v-if="isPuzzleComplete & showFlower">
+        <Complete msg="frenchFlower" @close="showFlower=false" @navigate="navigateTo('EU')"></Complete>
+      </div>
+    </transition>
+    <transition>
+      <div class="popup-window" v-if="isPuzzleComplete & showCurrency">
+        <Complete msg="frenchCurrency" @close="showCurrency=false" @navigate="navigateTo('EU')"></Complete>
       </div>
     </transition>
     <audio v-if="isPuzzleComplete === false" :src="bgmSrc" autoplay controls @ended="audioFinished"></audio>
@@ -61,7 +86,10 @@ import Complete from '../popup_windows/complete_pop.vue';
 const router = useRouter();
 const isPuzzleComplete = ref(false);
 const canMovePuzzle = ref(false);
-const HideNotShow = ref(false);
+const showCar = ref(false);
+const showCuisine = ref(false);
+const showFlower = ref(false);
+const showCurrency = ref(false);
 
 // BGM control
 const bgmId = ref(0);
