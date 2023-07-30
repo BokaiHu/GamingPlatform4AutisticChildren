@@ -35,30 +35,30 @@
         <p v-if="msg === 'frenchCar'">
           {{ $t('FrenchCars') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=qgewyDj3ZnA" target="_blank">{{ $t('FrenchCarsLink') }}</a>
+          <a href="https://www.youtube.com/watch?v=lKFU6SLf_v4" target="_blank">{{ $t('FrenchCarsLink') }}</a>
         </p>
         <p v-else-if="msg === 'germanCar0'">
           {{ $t('GermanCars0') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=vvIacr85Sjo" target="_blank">{{ $t('GermanCarsLink0') }}</a>
+          <a href="https://www.youtube.com/watch?v=U1k0hg_X6Yc" target="_blank">{{ $t('GermanCarsLink0') }}</a>
           <br>
         </p>
         <p v-else-if="msg === 'italyCar'">
           {{ $t('ItalyCars') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=U6oPfmJcU8s" target="_blank">{{ $t('ItalyCarsLink') }}</a>
+          <a href="https://www.youtube.com/watch?v=k1bB_mU4wq0" target="_blank">{{ $t('ItalyCarsLink') }}</a>
           <br>
         </p>
         <p v-else-if="msg === 'britishCar'">
           {{ $t('BritishCars') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=tpYwWK7Xgvc" target="_blank">{{ $t('BritishCarsLink') }}</a>
+          <a href="https://www.youtube.com/watch?v=LuANURnBzWQ" target="_blank">{{ $t('BritishCarsLink') }}</a>
           <br>
         </p>
         <p v-else-if="msg === 'germanCar1'">
           {{ $t('GermanCars1') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=rzQZuQBm074" target="_blank">{{ $t('GermanCarsLink1') }}</a>
+          <a href="https://www.youtube.com/watch?v=_8VA9jiKiAk" target="_blank">{{ $t('GermanCarsLink1') }}</a>
           <br>
         </p>
         <p v-else-if="msg === 'sydney'">
@@ -143,24 +143,24 @@
         <p v-else-if="msg === 'frenchFlower'">
           {{ $t('FrenchFlower') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=AoHYO1yfe9w" target="_blank">{{ $t('FrenchFlowerLink') }}</a>
+          <a href="https://www.youtube.com/watch?v=lFMqinJIdYE" target="_blank">{{ $t('FrenchFlowerLink') }}</a>
         </p>
         <p v-else-if="msg === 'germanFlower'">
           {{ $t('GermanFlower') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=0Sr9pUYiF2k" target="_blank">{{ $t('GermanFlowerLink') }}</a>
+          <a href="https://www.youtube.com/watch?v=oQ3A-XDhHvg" target="_blank">{{ $t('GermanFlowerLink') }}</a>
           <br>
         </p>
         <p v-else-if="msg === 'italyFlower'">
           {{ $t('ItalyFlower') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=7toSikYGFNM" target="_blank">{{ $t('ItalyFlowerLink0') }}</a>
+          <a href="https://www.youtube.com/watch?v=WFsMnd5eqLw" target="_blank">{{ $t('ItalyFlowerLink0') }}</a>
           <br>
         </p>
         <p v-else-if="msg === 'britishFlower'">
           {{ $t('BritishFlower') }}
           <br>
-          <a href="https://www.youtube.com/watch?v=8F0FSm5lVvs" target="_blank">{{ $t('BritishFlowerLink') }}</a>
+          <a href="https://www.youtube.com/watch?v=jiMVZvuNYeo&t=107" target="_blank">{{ $t('BritishFlowerLink') }}</a>
           <br>
         </p>
         <p v-else-if="msg === 'austriliaCuisine'">
