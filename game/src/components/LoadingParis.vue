@@ -1,9 +1,8 @@
 <template>
   <div>
-  <img src="/src/assets/loading/ef_tower.png" alt="" class="img" ref="imgDiv">
   <div class="videoContainer">
     <video class="fullscreenVideo" id="bgVid" playsinline="" autoplay="muted" muted="" loop="">
-    <source src="/src/assets/train.mp4" type="video/mp4">
+    <source src="/src/assets/loading/paris.mp4" type="video/mp4">
     </video>
   </div>
 </div>
@@ -41,7 +40,7 @@
        setTimeout(() => {
        this.$router.push({
          name:"paris"
-       })},8500)
+       })},6000)
     },
   }
 </script>
@@ -85,7 +84,7 @@
 
 .fullscreenVideo{
   width: 100%;
-  height: 120%;
+  height: 100%;
   object-fit: fill;
 }
 
